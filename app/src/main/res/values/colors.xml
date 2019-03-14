@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#484A5D</color>
+    <color name="colorPrimaryDark">#484A5D</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="colorWhite">#ffffff</color>
+
+    <!--textcolor-->
+    <color name="color_grey_text">#d3d3d3</color>
+
+    <!--Home page-->
+    <!--Promotion color-->
+    <color name="color_promotion_valid_bg">#FF0000</color>
+    <color name="color_promotion_text">#FFF</color>
+    <color name="color_divider">#6E7385</color>
+
+    <!--app theme text color-->
+    <color name="color_text_white">#FFF</color>
+
+    <!--menu item price color-->
+    <color name="color_menu_price_text">#FB7300</color>
+    <color name="color_menu_price_bg">#050404</color>
+
+    <!--tab dots color-->
+    <color name="color_tab_dot_selected">#FFF</color>
+    <color name="color_tab_dot_default">#5C6072</color>
+
+    <!--divider-->
+    <color name="color_login_divider">#696969</color>
+</resources>

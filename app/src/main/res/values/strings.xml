@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">VendorApp</string>
+
+    <string name="title_facebook">Facebook Log In</string>
+    <string name="text_signup">Create Account</string>
+    <string name="text_signup_email">Sign up with email</string>
+    <string name="text_signup_facebook">Connect with facebook</string>
+    <string name="text_signup_facebook2">Log In</string>
+    <string name="text_signup_instagram">Connect with instagram</string>
+    <string name="text_signup_instagram2">Log In</string>
+    <string name="text_login_email">Login with email</string>
+    <string name="login">LOGIN</string>
+    <string name="or">OR</string>
+
+    <!--facebook api id-->
+    <string name="facebook_app_id">496526990877649</string>
+    <string name="fb_login_protocol_scheme">fb496526990877649</string>
+    <string name="password">Password</string>
+    <string name="email_address">Email Address</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="don_t_have_an_account_yet_sign_up_now"><u>Don\'t have an account yet? Sign up now</u></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settings">Settings</string>
+    <string name="termsAndCondition"><![CDATA[Terms & Condition]]></string>
+    <string name="validDate">Valid date</string>
+    <string name="loremIpsum1p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet scelerisque odio. Aliquam erat volutpat. Vivamus ut augue a ligula lacinia luctus id sed turpis. Sed eu sapien a elit consectetur venenatis. Cras urna est, porta vitae mollis ac, ultricies vitae sem. Suspendisse potenti. Integer rutrum ligula a dictum tincidunt. Aliquam sit amet enim a augue interdum sagittis. Duis sapien odio, commodo vitae egestas dapibus, dapibus non orci. Maecenas posuere velit nec nulla molestie, at feugiat magna placerat. Sed eu ultrices mauris, sed cursus mauris. Fusce commodo vitae urna ac tempor.</string>
+    <string name="loremIpsum2p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet scelerisque odio. Aliquam erat volutpat. Vivamus ut augue a ligula lacinia luctus id sed turpis. Sed eu sapien a elit consectetur venenatis. Cras urna est, porta vitae mollis ac, ultricies vitae sem. Suspendisse potenti. Integer rutrum ligula a dictum tincidunt. Aliquam sit amet enim a augue interdum sagittis. Duis sapien odio, commodo vitae egestas dapibus, dapibus non orci. Maecenas posuere velit nec nulla molestie, at feugiat magna placerat. Sed eu ultrices mauris, sed cursus mauris. Fusce commodo vitae urna ac tempor.
+Sed ullamcorper aliquam arcu ut viverra. Maecenas quis euismod nulla. In vitae diam nec risus faucibus vulputate et id leo. Aenean eu blandit lectus, eu egestas erat. Pellentesque orci ipsum, rutrum nec posuere ac, egestas malesuada leo. Fusce iaculis turpis eget neque lobortis, quis accumsan neque gravida. Duis lobortis rhoncus eros, in eleifend mi tincidunt id. Pellentesque ac erat suscipit, lacinia est sit amet, feugiat sapien. Aliquam pellentesque fermentum euismod. Pellentesque posuere vitae metus in hendrerit.</string>
+
+    <!--individual tab item-->
+    <string name="vendorName">Lekkers Cafe</string>
+    <string name="menu">Menu</string>
+    <string name="redeem">Redeem</string>
+    <string name="since">Since</string>
+
+    <!--read more underline-->
+    <string name="read_more"><u>Read More</u></string>
+    <string name="redeem">Redeem</string>
+</resources>
