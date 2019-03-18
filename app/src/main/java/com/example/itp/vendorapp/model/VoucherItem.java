@@ -3,18 +3,20 @@ package com.example.itp.vendorapp.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Voucher implements Parcelable {
+public class VoucherItem implements Parcelable {
 
     private String id;
+    private String status;
     private String imgUrl;
     private String title;
     private String pointsRequired;
 
-    public Voucher() {
+    public VoucherItem() {
     }
 
-    public Voucher(String id, String imgUrl, String title, String pointsRequired) {
+    public VoucherItem(String id, String status, String imgUrl, String title, String pointsRequired) {
         this.id = id;
+        this.status = status;
         this.imgUrl = imgUrl;
         this.title = title;
         this.pointsRequired = pointsRequired;
@@ -26,6 +28,14 @@ public class Voucher implements Parcelable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getImgUrl() {
@@ -61,27 +71,29 @@ public class Voucher implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.id);
+        dest.writeString(this.status);
         dest.writeString(this.imgUrl);
         dest.writeString(this.title);
         dest.writeString(this.pointsRequired);
     }
 
-    protected Voucher(Parcel in) {
+    protected VoucherItem(Parcel in) {
         this.id = in.readString();
+        this.status = in.readString();
         this.imgUrl = in.readString();
         this.title = in.readString();
         this.pointsRequired = in.readString();
     }
 
-    public static final Creator<Voucher> CREATOR = new Creator<Voucher>() {
+    public static final Creator<VoucherItem> CREATOR = new Creator<VoucherItem>() {
         @Override
-        public Voucher createFromParcel(Parcel source) {
-            return new Voucher(source);
+        public VoucherItem createFromParcel(Parcel source) {
+            return new VoucherItem(source);
         }
 
         @Override
-        public Voucher[] newArray(int size) {
-            return new Voucher[size];
+        public VoucherItem[] newArray(int size) {
+            return new VoucherItem[size];
         }
     };
 }

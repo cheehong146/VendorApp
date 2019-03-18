@@ -6,19 +6,21 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener{
+import com.example.itp.vendorapp.base.helpers.FragmentHelper;
+
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    public void startNewActivityWithFinish(Activity toFinish, Intent intentToStart){
+    public void startNewActivityWithFinish(Activity toFinish, Intent intentToStart) {
         toFinish.finish();
         startActivity(intentToStart);
     }
 
-    public void startNewActivityWithoutFinish(Intent intent){
+    public void startNewActivityWithoutFinish(Intent intent) {
         startActivity(intent);
     }
 
-    public void startActivityClearTop(Context context, Class goToClass){
+    public void startActivityClearTop(Context context, Class goToClass) {
         Intent intent = new Intent(context, goToClass);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

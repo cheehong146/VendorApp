@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/tv_redeem_dialog_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Are you sure you want to proceed to use the voucher?"
+            android:textAlignment="center"
+            android:textColor="@color/color_text_white"
+            android:textSize="14sp" />
+
+
+        <include
+            android:id="@+id/customer_header"
+            layout="@layout/header_customer_inverse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_redeem_dialog_question"
+            android:layout_marginTop="8dp" />
+
+        <RelativeLayout
+            android:id="@+id/customer_item_container"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_below="@id/customer_header"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/tv_redeem_dialog_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:text="Burger x Fries"
+                android:textColor="@color/color_text_white"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/tv_redeem_dialog_point_required"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="- 500 pts"
+                android:textColor="@color/color_point_deduction_font"
+                android:textSize="12dp" />
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/ib_close"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/customer_item_container"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/close_button" />
+
+        <Button
+            android:id="@+id/btn_proceed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ib_close"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="24dp"
+            android:background="@color/color_proceed_btn"
+            android:text="Proceed"
+            android:textColor="@color/color_text_white"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

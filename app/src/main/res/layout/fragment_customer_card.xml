@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@drawable/black_abstract_card" />
+            android:src="@drawable/card_black" />
 
         <ImageView
             android:id="@+id/iv_customer_card_profile_pic"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:text="Placeholder"
+            android:text="@string/adam_see"
             android:textColor="@color/color_text_white"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Placeholder"
+            android:text="10WHR 10005 3423"
             android:textColor="@color/color_text_white"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintStart_toEndOf="@+id/textView"

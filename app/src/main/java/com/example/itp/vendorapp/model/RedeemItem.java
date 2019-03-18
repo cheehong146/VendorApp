@@ -1,12 +1,18 @@
 package com.example.itp.vendorapp.model;
 
-class RedeemItem {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class RedeemItem implements Parcelable {
 
     private String id;
     private String status;
     private String title;
     private String pointsRequired;
     private String imgUrl;
+
+    public RedeemItem() {
+    }
 
     public RedeemItem(String id, String status, String title, String pointsRequired, String imgUrl) {
         this.id = id;
@@ -53,6 +59,42 @@ class RedeemItem {
     }
 
     public void setImgUrl(String imgUrl) {
+
+
         this.imgUrl = imgUrl;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.status);
+        dest.writeString(this.title);
+        dest.writeString(this.pointsRequired);
+        dest.writeString(this.imgUrl);
+    }
+
+    protected RedeemItem(Parcel in) {
+        this.id = in.readString();
+        this.status = in.readString();
+        this.title = in.readString();
+        this.pointsRequired = in.readString();
+        this.imgUrl = in.readString();
+    }
+
+    public static final Creator<RedeemItem> CREATOR = new Creator<RedeemItem>() {
+        @Override
+        public RedeemItem createFromParcel(Parcel source) {
+            return new RedeemItem(source);
+        }
+
+        @Override
+        public RedeemItem[] newArray(int size) {
+            return new RedeemItem[size];
+        }
+    };
 }

@@ -11,7 +11,7 @@
 
     <!--Home page-->
     <!--Promotion color-->
-    <color name="color_promotion_valid_bg">#FF0000</color>
+    <color name="color_promotion_valid_bg">#EE2b32</color>
     <color name="color_promotion_text">#FFF</color>
     <color name="color_divider">#6E7385</color>
 
@@ -28,4 +28,17 @@
 
     <!--divider-->
     <color name="color_login_divider">#696969</color>
+
+    <!--redeem item status background color-->
+    <color name="color_redeem_item_status_bg">#e4e4e4</color>
+    <color name="color_redeem_item_status_text">#000</color>
+
+    <!--redeem confirmation dialog-->
+    <!--point deduction font color-->
+    <color name="color_point_deduction_font">#EE2b32</color>
+    <!--proceed button bg color-->
+    <color name="color_proceed_btn">#6E7385</color>
+
+    <!--location-->
+    <color name="color_navigation_btn_bg">#6E7385</color>
 </resources>

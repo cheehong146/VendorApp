@@ -71,11 +71,14 @@ public class MainActivity extends BaseActivity {
                         startNewActivityWithoutFinish(new Intent(MainActivity.this, MenuActivity.class));
                         return true;
                     case R.id.menu_item_redeem:
-                        startActivityClearTop(MainActivity.this, RedeemActivity.class);
+//                        startActivityClearTop(MainActivity.this, RedeemActivity.class);
+                        startNewActivityWithoutFinish(new Intent(MainActivity.this, RedeemActivity.class));
                         return true;
                     case R.id.menu_item_voucher:
+                        startNewActivityWithoutFinish(new Intent(MainActivity.this, VoucherActivity.class));
                         return true;
                     case R.id.menu_item_located:
+                        startNewActivityWithoutFinish(new Intent(MainActivity.this, LocationActivity.class));
                         return true;
                     case R.id.menu_item_setting:
                         return true;
