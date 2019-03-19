@@ -21,7 +21,7 @@ import com.example.itp.vendorapp.model.VoucherItem;
 
 import org.w3c.dom.Text;
 
-public class VoucherUsageFragment extends BaseFragment {
+public class VoucherUsageFragment extends BaseFragment implements View.OnClickListener {
 
     VoucherItem item;
 
@@ -33,9 +33,6 @@ public class VoucherUsageFragment extends BaseFragment {
     ImageView ivItem;
     TextView tvItemTitle;
     TextView tvItemCode;
-
-    //swipe
-    SeekBar swipeBar;
 
     FragmentVoucherUsageBinding binding;
 
@@ -95,28 +92,23 @@ public class VoucherUsageFragment extends BaseFragment {
         ivItem = binding.ivVoucherUsageItem;
         tvItemTitle = binding.tvVoucherUsageItemTitle;
         tvItemCode = binding.tvVoucherUsageItemCode;
-        swipeBar = binding.voucherSwipeBar.voucherSwipeBar;
     }
 
     @Override
     public void setupListener() {
         ivBackBtn.setOnClickListener(this);
-        swipeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                //TODO when reach 100
-            }
+        binding.btnVoucherUse.setOnClickListener(this);
+    }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_voucher_use:
+                listener.onVoucherUsedClick();
+                break;
+            case R.id.ib_back:
+                listener.back();
+        }
     }
 
     /**
@@ -131,6 +123,6 @@ public class VoucherUsageFragment extends BaseFragment {
     public interface FragmentListener {
         void back();
 
-        void onSwipe();
+        void onVoucherUsedClick();
     }
 }

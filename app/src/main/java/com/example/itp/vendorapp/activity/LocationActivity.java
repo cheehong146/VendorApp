@@ -3,20 +3,28 @@ package com.example.itp.vendorapp.activity;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.BaseActivity;
 import com.example.itp.vendorapp.databinding.ActivityLocationBinding;
+import com.example.itp.vendorapp.utils.UIDimensionUtils;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -26,10 +34,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class LocationActivity extends BaseActivity implements View.OnClickListener {
-
-
     private GoogleMap mMap;
 
+    private static final String TAG = "LocationActivity";
 
     //toolbar
     TextView tvToolbarTitle;
@@ -84,14 +91,40 @@ public class LocationActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void setupVendorDateTimeOperation() {
-        GridLayout gridLayout = binding.locationBottomMasterSheet.locationFooterSecondary.gridLocationFooterOperationValues;
+
+        TableLayout tableLayout = binding.locationBottomMasterSheet.locationFooterSecondary.tableLocationFooterOperationValues;
         String[] days = {"Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
-        String time = "11am-0.20pm";
-        gridLayout.setColumnCount(2);
-        gridLayout.setRowCount(days.length);
-        for (int i = 0; i < days.length; i++) {
-            gridLayout.addChild//TODO ADD CHILDREN HERE
+        String time = "11am-9.20pm";
+
+        for (int row = 0; row < days.length; row++) {
+            TableRow tableRow = getTableRow();
+            //add the textview here
+            tableRow.addView(getDateTimeOperationTextView(days[row]), 0);
+
+            TextView tvTime = getDateTimeOperationTextView(time);
+            tvTime.setPadding(UIDimensionUtils.dpToPx(18), 0, 0, 0);
+            tableRow.addView(tvTime, 1);
+
+            tableLayout.addView(tableRow);
         }
+    }
+
+    private TextView getDateTimeOperationTextView(String text) {
+        TextView textView = new TextView(this);
+        textView.setText(text);
+        textView.setTextColor(getResources().getColor(R.color.color_text_white));
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        return textView;
+    }
+
+    private TableRow getTableRow() {
+        TableRow tableRow = new TableRow(this);
+        TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+        //set styling/spacing for the table row
+        int paddingPixel = UIDimensionUtils.dpToPx(12);
+        layoutParams.setMargins(paddingPixel, paddingPixel, paddingPixel, paddingPixel);
+        tableRow.setLayoutParams(layoutParams);
+        return tableRow;
     }
 
     @Override

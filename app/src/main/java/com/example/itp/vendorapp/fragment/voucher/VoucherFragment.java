@@ -65,9 +65,9 @@ public class VoucherFragment extends BaseFragment implements View.OnClickListene
 
         initComponents();
         setupVoucherRv();
-
         return binding.getRoot();
     }
+
 
     private void setupVoucherRv() {
         VoucherAdapter voucherAdapter = new VoucherAdapter(vouchers, getActivity());

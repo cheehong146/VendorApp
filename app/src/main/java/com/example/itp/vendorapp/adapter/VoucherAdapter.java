@@ -22,6 +22,8 @@ import java.util.List;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
+import static android.view.View.GONE;
+
 public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.ViewHolder> {
 
     private Context context;
@@ -80,6 +82,10 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.ViewHold
                     .transform(new CenterCrop())
                     .load("https://www.goodfood.com.au/content/dam/images/h/0/f/a/q/i/image.related.wideLandscape.940x529.h0fa4n.png/1515456591895.jpg")
                     .into(viewHolder.ivVoucherItem);
+            viewHolder.tvVoucherStatus.setVisibility(GONE);
+            //bind item that have no status to a listener
+            viewHolder.bind(voucherItemList.get(i), listener);
+
         } else {
             //image blur if status is expired, redeemed
             Glide.with(context)
@@ -87,9 +93,8 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.ViewHold
                     .transform(new CenterCrop(), new BlurTransformation())
                     .load("https://www.goodfood.com.au/content/dam/images/h/0/f/a/q/i/image.related.wideLandscape.940x529.h0fa4n.png/1515456591895.jpg")
                     .into(viewHolder.ivVoucherItem);
-        }
 
-        viewHolder.bind(voucherItemList.get(i), listener);
+        }
 
 
     }

@@ -14,6 +14,7 @@
     <color name="color_promotion_valid_bg">#EE2b32</color>
     <color name="color_promotion_text">#FFF</color>
     <color name="color_divider">#6E7385</color>
+    <color name="color_read_more">#FFF</color>
 
     <!--app theme text color-->
     <color name="color_text_white">#FFF</color>

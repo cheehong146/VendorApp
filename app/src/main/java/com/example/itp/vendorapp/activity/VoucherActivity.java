@@ -13,6 +13,7 @@ import com.example.itp.vendorapp.base.BaseActivity;
 import com.example.itp.vendorapp.base.helpers.FragmentHelper;
 import com.example.itp.vendorapp.databinding.ActivityVoucherBinding;
 import com.example.itp.vendorapp.fragment.VoucherUsageFragment;
+import com.example.itp.vendorapp.fragment.redeem.SuccessFragment;
 import com.example.itp.vendorapp.fragment.voucher.VoucherFragment;
 import com.example.itp.vendorapp.model.VoucherItem;
 
@@ -38,7 +39,7 @@ public class VoucherActivity extends BaseActivity {
     }
 
     private void intiFirstFragment() {
-        VoucherFragment fragment = VoucherFragment.newInstance(getDummyData());
+        final VoucherFragment fragment = VoucherFragment.newInstance(getDummyData());
         fragment.setupListener(new VoucherFragment.FragmentListener() {
             @Override
             public void onItemClick(VoucherItem item) {
@@ -50,8 +51,15 @@ public class VoucherActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onSwipe() {
-
+                    public void onVoucherUsedClick() {
+                        SuccessFragment successFragment = SuccessFragment.newInstance("Lekkers Cafe", "Voucher", "Voucher Used", "Voucher is marked as used", "");
+                        successFragment.setupListener(new SuccessFragment.FragmentListener() {
+                            @Override
+                            public void back() {
+                                fragmentHelper.popAllFragment(getSupportFragmentManager());
+                            }
+                        });
+                        fragmentHelper.loadFragment(getSupportFragmentManager(), successFragment, TAG, R.id.frame_voucher_activity);
                     }
                 });
                 fragmentHelper.loadFragment(getSupportFragmentManager(), voucherUsageFragment, TAG, R.id.frame_voucher_activity);
