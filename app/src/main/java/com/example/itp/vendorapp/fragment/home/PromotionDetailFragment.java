@@ -1,13 +1,13 @@
 package com.example.itp.vendorapp.fragment.home;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,11 +17,11 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.BaseFragment;
-import com.example.itp.vendorapp.databinding.FragmentPromotionDetailedBinding;
 import com.example.itp.vendorapp.model.Customer;
 import com.example.itp.vendorapp.model.PromotionItem;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 
-public class PromotionDetailFragment extends BaseFragment implements View.OnClickListener {
+public class PromotionDetailFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "PromotionDetailedFrag";
 
@@ -29,11 +29,10 @@ public class PromotionDetailFragment extends BaseFragment implements View.OnClic
     private Customer customer;
     String vendorName;
 
-    FragmentPromotionDetailedBinding binding;
-
     //toolbar ui view
+    View toolbar;
     TextView tvToolbarTitle;
-    ImageView ivToolbarBack;
+    ImageButton ibToolbarBack;
 
     //customer header ui view
     TextView tvCustomerUsername;
@@ -41,9 +40,13 @@ public class PromotionDetailFragment extends BaseFragment implements View.OnClic
     ImageView ivCustomerProfilePicture;
 
     //content ui view
-    TextView tvDescription, tvTermsAndCondition;//TODO Expandable textview
     TextView tvFoodName, tvValidDate;
     ImageView ivFoodImage;
+    ExpandableTextView etvDescription, etvTermsCondition;
+
+    /***
+     *    DATA BINDING IS DISABLED FOR THIS PAGE DUE TO THE EXPANDABLE TEXT VIEW LIBRARY CRASHING WITH IT
+     */
 
     public static PromotionDetailFragment newInstance(Customer customer, PromotionItem item, String vendorName) {
         Bundle args = new Bundle();
@@ -59,6 +62,7 @@ public class PromotionDetailFragment extends BaseFragment implements View.OnClic
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         try {
             item = getArguments().getParcelable("promotionItem");
             customer = getArguments().getParcelable("customer");
@@ -71,13 +75,12 @@ public class PromotionDetailFragment extends BaseFragment implements View.OnClic
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_promotion_detailed, container, false);
+        View view = inflater.inflate(R.layout.fragment_promotion_detailed, container, false);
 
-        initComponents();
+        initComponents(view);
         setupViewWithData();
 
-
-        return binding.getRoot();
+        return view;
     }
 
     private void setupViewWithData() {
@@ -102,9 +105,9 @@ public class PromotionDetailFragment extends BaseFragment implements View.OnClic
 
     private void setupContentData() {
         tvFoodName.setText(item.getName());
-        tvDescription.setText(item.getDesc());
+        etvDescription.setText(item.getDesc());
         tvValidDate.setText(item.getValidityDate());
-        tvTermsAndCondition.setText(item.getTermsAndCondition());
+        etvTermsCondition.setText(item.getTermsAndCondition());
 
         Glide.with(this)
                 .asBitmap()
@@ -113,61 +116,50 @@ public class PromotionDetailFragment extends BaseFragment implements View.OnClic
                 .into(ivFoodImage);
     }
 
-    @Override
-    public void initComponents() {
-        bindComponents();
+    public void initComponents(View view) {
+        bindComponents(view);
         setupListener();
     }
 
-    @Override
-    public void bindComponents() {
+    public void bindComponents(View view) {
         //toolbar
-        tvToolbarTitle = binding.toolbarHome.tvToolbarTitle;
-        ivToolbarBack = binding.toolbarHome.ivToolbarBackArrow;
-
+        toolbar = view.findViewById(R.id.toolbar_home);
+        tvToolbarTitle = toolbar.findViewById(R.id.tv_title);
+        ibToolbarBack = toolbar.findViewById(R.id.ib_back);
         //customer header
-        tvCustomerUsername = binding.customerHeader.tvHomeHeaderUsername;
-        tvCustomerAvailablePoints = binding.customerHeader.tvHomeHeaderPointsVal;
-        ivCustomerProfilePicture = binding.customerHeader.ivHomeHeaderProfilePic;
-
+        View customerHeader = view.findViewById(R.id.customer_header);
+        tvCustomerUsername = customerHeader.findViewById(R.id.tv_home_header_username);
+        tvCustomerAvailablePoints = customerHeader.findViewById(R.id.tv_home_header_points_val);
+        ivCustomerProfilePicture = customerHeader.findViewById(R.id.iv_home_header_profile_pic);
         //content
-        tvFoodName = binding.tvPromotionDetailedTitle;
-        ivFoodImage = binding.ivPromotionDetailed;
-        tvValidDate = binding.tvPromotionDetailedValidDateContent;
-        //not using data binding cause expand text view library doesn't support it
-        tvDescription = binding.getRoot().findViewById(R.id.tv_promotion_detailed_description);
-        tvTermsAndCondition = binding.getRoot().findViewById(R.id.tv_promotion_detailed_terms_condition_content);
+        tvFoodName = view.findViewById(R.id.tv_promotion_detailed_title);
+        ivFoodImage = view.findViewById(R.id.iv_promotion_detailed);
+        tvValidDate = view.findViewById(R.id.tv_promotion_detailed_valid_date_content);
+        //content, expandableTextView
+        etvDescription = view.findViewById(R.id.expandable_text_details);
+        etvTermsCondition = view.findViewById(R.id.expandable_text_terms_condition);
     }
 
-    @Override
     public void setupListener() {
         //toolbar
-        ivToolbarBack.setOnClickListener(this);
+//        ibToolbarBack.setOnClickListener(this);
 
         //customer header
-        tvCustomerUsername.setOnClickListener(this);
+//        tvCustomerUsername.setOnClickListener(this);
 //        tvCustomerAvailablePoints.setOnClickListener(this); TODO determine if user can click on available point to go to profile
-        ivCustomerProfilePicture.setOnClickListener(this);
+//        ivCustomerProfilePicture.setOnClickListener(this);
 
         //content
-        tvDescription.setOnClickListener(this);
-        tvTermsAndCondition.setOnClickListener(this);
-        tvValidDate.setOnClickListener(this);
+//        tvDescription.setOnClickListener(this);
+//        tvTermsAndCondition.setOnClickListener(this); TODO
+//        tvValidDate.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_toolbar_back_arrow:
+            case R.id.ib_back:
                 listener.back();
-                break;
-
-            case R.id.tv_promotion_detailed_description:
-                Log.d(TAG, "onClick: tv_showcase_detailed_description");
-                break;
-
-            case R.id.tv_promotion_detailed_terms_condition_content:
-                Log.d(TAG, "onClick: tv_showcase_detailed_description");
                 break;
         }
     }

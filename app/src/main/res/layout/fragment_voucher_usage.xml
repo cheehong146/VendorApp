@@ -62,10 +62,10 @@
             android:layout_height="0dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/food_placeholder"
-            app:layout_constraintBottom_toTopOf="@id/voucher_swipe_bar"
+            app:layout_constraintBottom_toTopOf="@+id/btn_voucher_use"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView2" />
@@ -75,7 +75,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginBottom="10dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@id/iv_voucher_usage_item"
             app:layout_constraintEnd_toEndOf="parent"
@@ -115,15 +114,30 @@
         </LinearLayout>
 
 
-        <include
-            android:id="@+id/voucher_swipe_bar"
-            layout="@layout/swipe_bar"
+        <Button
+            android:id="@+id/btn_voucher_use"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10sp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/swipe_bar_bg"
+            android:text="Click to use"
+            android:textColor="@color/color_text_white"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <!--<include-->
+        <!--android:id="@+id/voucher_swipe_bar"-->
+        <!--layout="@layout/swipe_bar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="10sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent" />-->
 
         <!--<SeekBar-->
         <!--android:id="@+id/voucher_swipe_bar"-->

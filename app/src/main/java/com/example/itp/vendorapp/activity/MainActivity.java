@@ -81,6 +81,7 @@ public class MainActivity extends BaseActivity {
                         startNewActivityWithoutFinish(new Intent(MainActivity.this, LocationActivity.class));
                         return true;
                     case R.id.menu_item_setting:
+                        startNewActivityWithoutFinish(new Intent(MainActivity.this, SettingActivity.class));
                         return true;
                 }
                 return false;

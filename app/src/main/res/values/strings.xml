@@ -40,4 +40,10 @@ Sed ullamcorper aliquam arcu ut viverra. Maecenas quis euismod nulla. In vitae d
     <string name="adam_see">Adam See</string>
     <string name="voucher">Voucher</string>
     <string name="title_activity_location">Map</string>
+    <string name="setting">Setting</string>
+    <string name="profile_setting">Profile Setting</string>
+    <string name="about_me">About me</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="links">Links</string>
+    <string name="logout">Logout</string>
 </resources>

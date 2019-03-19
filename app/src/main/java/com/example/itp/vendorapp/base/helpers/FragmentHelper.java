@@ -15,7 +15,8 @@ public class FragmentHelper {
 
 
     /**
-     *  change fragment of the current tab
+     * change fragment of the current tab
+     *
      * @param fm
      * @param fragment
      * @param parentLayout
@@ -53,6 +54,7 @@ public class FragmentHelper {
 
     /**
      * pop frame from backstack
+     *
      * @param fm
      * @return
      */
@@ -64,8 +66,21 @@ public class FragmentHelper {
         return isPop;
     }
 
+    public boolean popAllFragment(FragmentManager fm) {
+        boolean isPop = false;
+        int fragmentInStack = fm.getBackStackEntryCount();
+        if (fragmentInStack > 0) {
+            for (int i = 0; i < fragmentInStack; i++) {
+                isPop = fm.popBackStackImmediate();//return true if the top frag on the stack is pop
+            }
+        }
+        return isPop;
+    }
+
+
     /**
      * init fragment for new tab
+     *
      * @param fm
      * @param fragment
      * @param frameLayout
