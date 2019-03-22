@@ -24,16 +24,6 @@ import com.example.itp.vendorapp.R;
 
 public class RedeemFragment extends BaseFragment implements View.OnClickListener {
 
-
-    //toolbar
-    TextView tvToolbarTitle;
-    ImageButton ibBackBtn;
-
-    //customer card
-
-    //content
-    RecyclerView rvRedeem;
-
     //dummy data
     List<RedeemItem> redeemItemList;
 
@@ -63,7 +53,7 @@ public class RedeemFragment extends BaseFragment implements View.OnClickListener
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_redeem, container, false);
 
-        initComponents();
+        setupListener();
         setupRedeemRv();
 
         return binding.getRoot();
@@ -78,26 +68,13 @@ public class RedeemFragment extends BaseFragment implements View.OnClickListener
             }
         });
 
-        rvRedeem.setAdapter(redeemAdapter);
-        rvRedeem.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-    }
-
-    @Override
-    public void initComponents() {
-        bindComponents();
-        setupListener();
-    }
-
-    @Override
-    public void bindComponents() {
-        ibBackBtn = binding.toolbarRedeem.ibBack;
-        tvToolbarTitle = binding.toolbarRedeem.tvTitle;
-        rvRedeem = binding.rvRedeem;
+        binding.rvRedeem.setAdapter(redeemAdapter);
+        binding.rvRedeem.setLayoutManager(new GridLayoutManager(getActivity(), 2));
     }
 
     @Override
     public void setupListener() {
-        ibBackBtn.setOnClickListener(this);
+        binding.toolbarRedeem.ibBack.setOnClickListener(this);
     }
 
     @Override

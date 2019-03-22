@@ -27,7 +27,7 @@ import com.example.itp.vendorapp.model.PromotionItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private static final String TAG = "HomeFragment";
 
@@ -35,23 +35,12 @@ public class HomeFragment extends BaseFragment {
     Customer customer;
     List<PromotionItem> promotionList;
 
-    //binding
-    FragmentHomeBinding binding;
-
-    //UI view components
-    //toolbar title
-    TextView tvToolbarVendorName;//TODO debug data binding error in converting toolbar to view
-    //customer header
-    TextView tvCustomerUsername;
-    TextView tvCustomerAvailablePoints;
-    ImageView ivCustomerProfilePicture;
-    //showcase
-    ViewPager viewpagerPromotion;
-    TabLayout tabDotsPromotion;
-    PromotionViewPagerAdapter adapter;
-
     //buffer, for which item is showing on the screen now (viewpager), by default it's 0
     static int onCurItem = 0;
+
+    PromotionViewPagerAdapter adapter;
+
+    FragmentHomeBinding binding;
 
     public static HomeFragment newInstance(Customer customer, List<PromotionItem> item) {
         Bundle args = new Bundle();
@@ -88,7 +77,7 @@ public class HomeFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
 
-        initComponents();
+        setupListener();
 
         //populate the view with data
         initPromotionAdapter();
@@ -98,33 +87,18 @@ public class HomeFragment extends BaseFragment {
         return binding.getRoot();
     }
 
-    @Override
-    public void initComponents() {
-        bindComponents();
-        setupListener();
-    }
-
-    @Override
-    public void bindComponents() {
-        //toolbar title
-//        tvToolbarVendorName = binding.toolbarHome;
-        //customer header
-        tvCustomerUsername = binding.customerHeader.tvHomeHeaderUsername;
-        tvCustomerAvailablePoints = binding.customerHeader.tvHomeHeaderPointsVal;
-        ivCustomerProfilePicture = binding.customerHeader.ivHomeHeaderProfilePic;
-        //showcase
-        viewpagerPromotion = binding.viewpagerPromotion;
-        tabDotsPromotion = binding.tabDots;
-    }
-
-    @Override
     public void setupListener() {
-        viewpagerPromotion.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+        binding.viewpagerPromotion.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
 
             }
 
+            /**
+             * set onCurItem to the on the cur screen fragment number, every time the user swipe to diff item
+             * @param i
+             */
             @Override
             public void onPageSelected(int i) {
                 onCurItem = i;
@@ -135,6 +109,16 @@ public class HomeFragment extends BaseFragment {
 
             }
         });
+
+        binding.customerHeader.ivHomeHeaderProfilePic.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_home_header_profile_pic:
+                listener.onProfileClick();
+        }
     }
 
     /**
@@ -142,10 +126,10 @@ public class HomeFragment extends BaseFragment {
      */
     private void initPromotionAdapter() {
         //      viewpager and tabDots linkage
-        tabDotsPromotion.setupWithViewPager(viewpagerPromotion, true);
+        binding.tabDots.setupWithViewPager(binding.viewpagerPromotion, true);
 
         adapter = new PromotionViewPagerAdapter(getChildFragmentManager(), promotionList);
-        viewpagerPromotion.setAdapter(adapter);
+        binding.viewpagerPromotion.setAdapter(adapter);
 
         adapter.setupListener(new PromotionViewPagerAdapter.FragmentListener() {
             @Override
@@ -158,14 +142,14 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void setupCustomerHeaderData() {
-        tvCustomerUsername.setText(customer.getUsername());
-        tvCustomerAvailablePoints.setText(customer.getPoints());
+        binding.customerHeader.tvHomeHeaderUsername.setText(customer.getUsername());
+        binding.customerHeader.tvHomeHeaderPointsVal.setText(customer.getPoints());
 
         Glide.with(this)
                 .asBitmap()
                 .transform(new CenterCrop(), new CircleCrop())
                 .load(customer.getImgUrl())
-                .into(ivCustomerProfilePicture);
+                .into(binding.customerHeader.ivHomeHeaderProfilePic);
     }
 
 
@@ -179,8 +163,9 @@ public class HomeFragment extends BaseFragment {
     }
 
     public interface FragmentListener {
-        void goBack();
 
         void onPromotionItemClick(PromotionItem item);
+
+        void onProfileClick();
     }
 }

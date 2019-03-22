@@ -20,7 +20,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
 
-
     ActivityMainBinding binding;
 
     BottomNavigationView navBar;
@@ -43,7 +42,8 @@ public class MainActivity extends BaseActivity {
         HomeParentFragment homeParentFragment = HomeParentFragment.newInstance(getDummyCustomer(), getDummyData());
         homeParentFragment.setupListener(new HomeParentFragment.FragmentListener() {
             @Override
-            public void onPromotionItemClick() {
+            public void onProfileClick() {
+                startNewActivityWithoutFinish(getProfileIntent(getDummyCustomer()));
             }
         });
 
@@ -89,9 +89,10 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    @Override
-    public void onClick(View v) {
-
+    private Intent getProfileIntent(Customer customer) {
+        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+        intent.putExtra("customer", customer);
+        return intent;
     }
 
 

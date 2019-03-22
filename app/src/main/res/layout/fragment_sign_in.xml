@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_login_vendor_logo"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/sample_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_login" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/facebook_login_container"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_above="@id/btn_login"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="12dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="8dp"
+                    android:elevation="12dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/facebook_logo"
+                    app:layout_constraintBottom_toBottomOf="@id/btn_facebook_login"
+                    app:layout_constraintStart_toStartOf="@id/btn_facebook_login"
+                    app:layout_constraintTop_toTopOf="@id/btn_facebook_login" />
+
+                <Button
+                    android:id="@+id/btn_facebook_login"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/rounded_corner_facebook_login_btn"
+                    android:text="Login/Signup with Facebook"
+                    android:textColor="@color/color_text_white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include
+                    layout="@layout/view_divider"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tv_placeholder_or"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_placeholder_or"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/or"
+                    android:textColor="@color/color_text_white"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <include
+                    layout="@layout/view_divider"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_placeholder_or"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/et_password"
+                android:backgroundTint="@color/color_login_edit_text_lines"
+                android:hint="Email"
+                android:maxLines="1"
+                android:textColor="@color/color_text_white" />
+
+            <TextView
+                android:id="@+id/tv_email_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/color_login_edit_text_lines"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColor="@color/color_text_white" />
+
+            <TextView
+                android:id="@+id/tv_password_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <!--<com.facebook.login.widget.LoginButton-->
+            <!--android:id="@+id/btn_facebook_login"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_marginTop="30dp"-->
+            <!--android:layout_marginBottom="30dp"-->
+            <!--android:background="@color/color_facebook_login_btn_bg"-->
+            <!--android:text="Login/Signup with Facebook"-->
+            <!--android:textColor="@color/color_text_white"-->
+            <!--android:textSize="18sp" />-->
+
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/tv_forget_pass"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_corner_login_btn_bg"
+                android:text="Login"
+                android:textColor="@color/color_text_white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_forget_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="@string/forget_password"
+                android:textAlignment="center"
+                android:textColor="@color/color_text_white"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

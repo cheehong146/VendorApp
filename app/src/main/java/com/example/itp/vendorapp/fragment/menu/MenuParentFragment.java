@@ -184,17 +184,6 @@ public class MenuParentFragment extends BaseFragment {
     }
 
     @Override
-    public void initComponents() {
-        bindComponents();
-        setupListener();
-    }
-
-    @Override
-    public void bindComponents() {
-
-    }
-
-    @Override
     public void setupListener() {
 
     }

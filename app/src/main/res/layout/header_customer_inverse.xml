@@ -12,14 +12,11 @@
             android:id="@+id/tv_home_header_available_points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:text="Available Points"
             android:textColor="@color/color_promotion_text"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            tools:layout_editor_absoluteX="311dp"
+            tools:layout_editor_absoluteY="8dp" />
 
         <TextView
             android:id="@+id/tv_home_header_points_val"
@@ -30,7 +27,7 @@
             android:layout_marginRight="8dp"
             android:text="9999"
             android:textColor="@color/color_promotion_text"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/tv_home_header_available_points" />
@@ -43,7 +40,8 @@
             android:layout_marginLeft="8dp"
             android:text="@string/adam_see"
             android:textColor="@color/color_promotion_text"
-            android:textSize="16sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/iv_home_header_profile_pic"
             app:layout_constraintStart_toEndOf="@+id/iv_home_header_profile_pic"
             app:layout_constraintTop_toTopOf="@+id/iv_home_header_profile_pic" />
@@ -54,6 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginRight="16dp"
+            android:textSize="18sp"
             android:text="Points"
             android:textColor="@color/color_text_white"
             app:layout_constraintBottom_toBottomOf="@+id/tv_home_header_points_val"

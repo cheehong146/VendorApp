@@ -8,12 +8,12 @@ import android.view.View;
 
 import com.example.itp.vendorapp.base.helpers.FragmentHelper;
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity {
 
+    public FragmentHelper fragmentHelper = new FragmentHelper(this);
 
-    public void startNewActivityWithFinish(Activity toFinish, Intent intentToStart) {
-        toFinish.finish();
-        startActivity(intentToStart);
+    public void startNewActivityWithFinish(Activity toFinish, Class goToClass) {
+      startActivity(new Intent(toFinish, goToClass));
     }
 
     public void startNewActivityWithoutFinish(Intent intent) {
@@ -26,9 +26,15 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         startActivity(intent);
     }
 
-    public abstract void initComponents();
+    public void initViewModel() {
+    }
 
-    public abstract void bindComponents();
+    public void bindComponents() {
+    }
+
+    public void initComponents() {
+
+    }
 
     public abstract void setupListener();
 

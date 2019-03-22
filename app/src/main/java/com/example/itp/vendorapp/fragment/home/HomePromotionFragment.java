@@ -29,9 +29,6 @@ public class HomePromotionFragment extends BaseFragment implements View.OnClickL
 
     FragmentHomePromotionBinding binding;
 
-    TextView tvValidity, tvTitle;
-    ImageView ivItem;
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -44,7 +41,7 @@ public class HomePromotionFragment extends BaseFragment implements View.OnClickL
                 inflater, R.layout.fragment_home_promotion, container, false);
         View view = binding.getRoot();
 
-        initComponents();
+        setupListener();
 
         //TODO CHANGE TO VIEW MODEL
         promotionItem = getArguments().getParcelable("promotionItem");
@@ -73,12 +70,12 @@ public class HomePromotionFragment extends BaseFragment implements View.OnClickL
 
             handleValidityText();
 
-            tvTitle.setText(promotionItem.getName());
+            binding.tvPromotionTitle.setText(promotionItem.getName());
             Glide.with(this)
                     .asBitmap()
                     .transform(new CenterCrop(), new RoundedCorners(32))
                     .load(promotionItem.getImgUrl())
-                    .into(ivItem);
+                    .into(binding.ivPromotion);
         } catch (NullPointerException e) {
             e.printStackTrace();
             //TODO HANDLE ERROR
@@ -88,34 +85,20 @@ public class HomePromotionFragment extends BaseFragment implements View.OnClickL
 
     private void handleValidityText() {
         if (promotionItem.getValidityDate() == null) {
-            tvValidity.setVisibility(View.INVISIBLE);
+            binding.tvPromotionValidity.setVisibility(View.INVISIBLE);
         } else {
             if (!promotionItem.getValidityDate().equals("")) {
-                tvValidity.setText("Validity Date: " + promotionItem.getValidityDate());
+                binding.tvPromotionValidity.setText("Validity Date: " + promotionItem.getValidityDate());
             } else {
-                tvValidity.setVisibility(View.INVISIBLE);
+                binding.tvPromotionValidity.setVisibility(View.INVISIBLE);
             }
         }
     }
 
-    @Override
-    public void bindComponents() {
-        tvValidity = binding.tvPromotionValidity;
-        tvTitle = binding.tvPromotionTitle;
-        ivItem = binding.ivPromotion;
-    }
-
-    @Override
     public void setupListener() {
-        tvValidity.setOnClickListener(this);
-        tvTitle.setOnClickListener(this);
-        ivItem.setOnClickListener(this);
-    }
-
-    @Override
-    public void initComponents() {
-        bindComponents();
-        setupListener();
+        binding.tvPromotionValidity.setOnClickListener(this);
+        binding.tvPromotionTitle.setOnClickListener(this);
+        binding.ivPromotion.setOnClickListener(this);
     }
 
     @Override

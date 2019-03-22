@@ -98,9 +98,4 @@ public class VoucherActivity extends BaseActivity {
     public void setupListener() {
 
     }
-
-    @Override
-    public void onClick(View v) {
-
-    }
 }

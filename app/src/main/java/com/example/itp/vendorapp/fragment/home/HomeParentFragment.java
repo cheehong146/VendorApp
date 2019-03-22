@@ -64,15 +64,6 @@ public class HomeParentFragment extends BaseFragment {
     }
 
     @Override
-    public void initComponents() {
-        bindComponents();
-    }
-
-    @Override
-    public void bindComponents() {
-    }
-
-    @Override
     public void setupListener() {
     }
 
@@ -80,13 +71,13 @@ public class HomeParentFragment extends BaseFragment {
         homeFragment = HomeFragment.newInstance(customer, promotionList);
         homeFragment.setupListener(new HomeFragment.FragmentListener() {
             @Override
-            public void goBack() {
-                popFragment();
+            public void onPromotionItemClick(PromotionItem promotionList) {
+                replaceFragment(initPromotionDetailFragment(promotionList), R.id.frame_home_parent, "PromotionDetailFragment");
             }
 
             @Override
-            public void onPromotionItemClick(PromotionItem promotionList) {
-                replaceFragment(initPromotionDetailFragment(promotionList), R.id.frame_home_parent, "PromotionDetailFragment");
+            public void onProfileClick() {
+                listener.onProfileClick();
             }
         });
         initFragment(homeFragment, R.id.frame_home_parent);
@@ -119,6 +110,6 @@ public class HomeParentFragment extends BaseFragment {
     }
 
     public interface FragmentListener {
-        void onPromotionItemClick();
+        void onProfileClick();
     }
 }

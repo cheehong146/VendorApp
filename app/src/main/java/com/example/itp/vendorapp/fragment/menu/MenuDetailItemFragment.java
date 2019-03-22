@@ -53,24 +53,9 @@ public class MenuDetailItemFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_menu_detail_item, container, false);
 
-        initComponents();
         setupViewsData();
 
         return binding.getRoot();
-    }
-
-
-    @Override
-    public void initComponents() {
-        bindComponents();
-    }
-
-    @Override
-    public void bindComponents() {
-        ivMenuDetailItem = binding.ivMenuDetail;
-        tvMenuDetailItemTitle = binding.tvMenuDetailTitle;
-        tvMenuDetailItemDesc = binding.tvMenuDetailDesc;
-        tvDetailItemPrice = binding.tvMenuDetailPrice;
     }
 
     @Override

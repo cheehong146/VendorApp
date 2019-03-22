@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:text="Available Points"
             android:textColor="@color/color_promotion_text"
@@ -30,7 +30,7 @@
             android:layout_marginTop="2dp"
             android:text="9999"
             android:textColor="@color/color_promotion_text"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_home_header_available_points" />
@@ -42,19 +42,22 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:text="@string/adam_see"
+            android:textStyle="bold"
             android:textColor="@color/color_promotion_text"
-            android:textSize="16sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_home_header_profile_pic"
             app:layout_constraintEnd_toStartOf="@+id/iv_home_header_profile_pic"
             app:layout_constraintTop_toTopOf="@+id/iv_home_header_profile_pic" />
 
         <TextView
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:text="Points"
             android:textColor="@color/color_text_white"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_home_header_points_val"
             app:layout_constraintStart_toEndOf="@+id/tv_home_header_points_val" />
 
