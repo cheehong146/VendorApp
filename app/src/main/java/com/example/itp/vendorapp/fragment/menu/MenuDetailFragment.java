@@ -26,14 +26,6 @@ public class MenuDetailFragment extends BaseFragment implements View.OnClickList
 
     FragmentMenuDetailBinding binding;
 
-    //toolbar
-    TextView tvToolbarTitle;
-
-    //content
-    ViewPager viewPagerMenuDetail;
-    TabLayout tabDots;
-    ImageView ivCloseBtn;
-
     public static MenuDetailFragment newInstance(ArrayList<MenuDetail> menuDetailArrayList) {
         Bundle args = new Bundle();
         args.putParcelableArrayList("menuDetailList", menuDetailArrayList);
@@ -58,7 +50,7 @@ public class MenuDetailFragment extends BaseFragment implements View.OnClickList
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_menu_detail, container, false);
 
-        initComponents();
+        setupListener();
 
         setupViewPager();
 
@@ -67,12 +59,12 @@ public class MenuDetailFragment extends BaseFragment implements View.OnClickList
 
     private void setupViewPager() {
         //data adapter
-        viewPagerMenuDetail.setAdapter(new MenuDetailViewPagerAdapter(getChildFragmentManager(), dummyData));
+        binding.viewpagerMenuDetail.setAdapter(new MenuDetailViewPagerAdapter(getChildFragmentManager(), dummyData));
 
         //animation
-        viewPagerMenuDetail.setPageMargin((int) (getResources().getDisplayMetrics().widthPixels * -0.33));
-        viewPagerMenuDetail.setOffscreenPageLimit(5);
-        viewPagerMenuDetail.setPageTransformer(false, new ViewPager.PageTransformer() {
+        binding.viewpagerMenuDetail.setPageMargin((int) (getResources().getDisplayMetrics().widthPixels * -0.33));
+        binding.viewpagerMenuDetail.setOffscreenPageLimit(5);
+        binding.viewpagerMenuDetail.setPageTransformer(false, new ViewPager.PageTransformer() {
             @Override
             public void transformPage(View page, float position) {
                 page.setScaleX(0.7f - Math.abs(position * 0.4f));
@@ -82,38 +74,17 @@ public class MenuDetailFragment extends BaseFragment implements View.OnClickList
         });
 
         //tab dot
-        tabDots.setupWithViewPager(viewPagerMenuDetail);
+        binding.tabDots.setupWithViewPager(binding.viewpagerMenuDetail);
     }
 
-
-    @Override
-    public void initComponents() {
-        bindComponents();
-        setupListener();
-    }
-
-    @Override
-    public void bindComponents() {
-        //toolbar
-        tvToolbarTitle = binding.toolbarMenuDetail.tvToolbarTitle;
-
-        //content
-        viewPagerMenuDetail = binding.viewpagerMenuDetail;
-        tabDots = binding.tabDots;
-
-        //close btn
-        ivCloseBtn = binding.btnClose;
-    }
-
-    @Override
     public void setupListener() {
-        ivCloseBtn.setOnClickListener(this);
+        binding.ibClose.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_close:
+            case R.id.ib_close:
                 listener.back();
         }
     }

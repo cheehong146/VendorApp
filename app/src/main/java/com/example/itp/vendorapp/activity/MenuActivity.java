@@ -56,13 +56,6 @@ public class MenuActivity extends BaseActivity {
         fragmentHelper.initFragment(getSupportFragmentManager(), fragment, R.id.frame_menu_parent);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-
-        }
-    }
-
     //dummy data
     private ArrayList<Menu> getMenu() {
         ArrayList<Menu> menus = new ArrayList<>();

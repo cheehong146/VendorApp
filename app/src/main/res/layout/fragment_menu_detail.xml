@@ -10,7 +10,7 @@
 
         <include
             android:id="@+id/toolbar_menu_detail"
-            layout="@layout/toolbar_menu_detail"
+            layout="@layout/toolbar_title_only"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,8 @@
             android:paddingBottom="10dp"
             android:text="@string/menu"
             android:textColor="@color/color_text_white"
-            android:textSize="18sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_menu_detail" />
 
         <android.support.v4.view.ViewPager
@@ -44,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_close"
+            app:layout_constraintBottom_toTopOf="@+id/ib_close"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:tabBackground="@drawable/tab_selector"
@@ -52,7 +53,7 @@
             app:tabIndicatorHeight="0dp" />
 
         <ImageButton
-            android:id="@+id/btn_close"
+            android:id="@+id/ib_close"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginBottom="25dp"

@@ -10,9 +10,9 @@
         <ImageView
             android:id="@+id/iv_customer_card_bg"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/card_black" />
+            android:src="@drawable/grey_card" />
 
         <ImageView
             android:id="@+id/iv_customer_card_profile_pic"
@@ -58,7 +58,7 @@
                 android:text="9999 PTS"
                 android:textAlignment="center"
                 android:textColor="@color/color_text_white"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -70,7 +70,7 @@
                 android:text="Available Points"
                 android:textAlignment="center"
                 android:textColor="@color/color_text_white"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <TextView
@@ -83,6 +83,7 @@
             android:layout_marginBottom="8dp"
             android:text="Membership No"
             android:textColor="@color/color_text_white"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_customer_card_bg"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -92,8 +93,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:text="10WHR 10005 3423"
             android:textColor="@color/color_text_white"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toTopOf="@+id/textView"

@@ -142,17 +142,12 @@ public class PromotionDetailFragment extends Fragment implements View.OnClickLis
 
     public void setupListener() {
         //toolbar
-//        ibToolbarBack.setOnClickListener(this);
+        ibToolbarBack.setOnClickListener(this);
 
         //customer header
 //        tvCustomerUsername.setOnClickListener(this);
 //        tvCustomerAvailablePoints.setOnClickListener(this); TODO determine if user can click on available point to go to profile
-//        ivCustomerProfilePicture.setOnClickListener(this);
-
-        //content
-//        tvDescription.setOnClickListener(this);
-//        tvTermsAndCondition.setOnClickListener(this); TODO
-//        tvValidDate.setOnClickListener(this);
+////        ivCustomerProfilePicture.setOnClickListener(this);
     }
 
     @Override

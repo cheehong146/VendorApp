@@ -29,14 +29,7 @@ public class MenuFragment extends BaseFragment {
 
     FragmentMenuBinding binding;
 
-    //toolbar
-    TextView tvToolbarTitle;
-    ImageView ivBackBtn;
-
-    //content
-    RecyclerView rvMenuType;
     MenuAdapter menuTypeAdapter;
-
 
     public static MenuFragment newInstance(ArrayList<Menu> menus) {
         Bundle args = new Bundle();
@@ -63,7 +56,7 @@ public class MenuFragment extends BaseFragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_menu, container, false);
 
 
-        initComponents();
+        setupListener();
         setupMenuAdapter();
 
         return binding.getRoot();
@@ -71,8 +64,8 @@ public class MenuFragment extends BaseFragment {
 
     private void setupMenuAdapter() {
         menuTypeAdapter = new MenuAdapter(new ArrayList<Menu>(menus), getActivity());
-        rvMenuType.setLayoutManager(getGridLayoutManager());//span of 2
-        rvMenuType.setAdapter(menuTypeAdapter);
+        binding.rvMenuType.setLayoutManager(getGridLayoutManager());//span of 2
+        binding.rvMenuType.setAdapter(menuTypeAdapter);
 
         menuTypeAdapter.setupListener(new MenuAdapter.FragmentListener() {
             @Override
@@ -88,33 +81,17 @@ public class MenuFragment extends BaseFragment {
     }
 
     @Override
-    public void initComponents() {
-        bindComponents();
-        setupListener();
-    }
-
-    @Override
-    public void bindComponents() {
-        //toolbar
-        tvToolbarTitle = binding.toolbarMenu.tvToolbarHomeTitle;
-        ivBackBtn = binding.toolbarMenu.ivToolbarBackArrow;
-
-        //content
-        rvMenuType = binding.rvMenuType;
-    }
-
-    @Override
     public void setupListener() {
         //toolbar back btn
-        ivBackBtn.setOnClickListener(this);
+        binding.toolbarMenu.ibBack.setOnClickListener(this);
 
-        rvMenuType.setOnClickListener(this);
+        binding.rvMenuType.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_toolbar_back_arrow:
+            case R.id.ib_back:
                 listener.back();
                 break;
         }

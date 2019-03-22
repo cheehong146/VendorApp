@@ -25,15 +25,6 @@ public class VoucherUsageFragment extends BaseFragment implements View.OnClickLi
 
     VoucherItem item;
 
-    //toolbar
-    TextView tvToolbarTitle;
-    ImageView ivBackBtn;
-
-    //content
-    ImageView ivItem;
-    TextView tvItemTitle;
-    TextView tvItemCode;
-
     FragmentVoucherUsageBinding binding;
 
     public static VoucherUsageFragment newInstance(VoucherItem item) {
@@ -60,8 +51,7 @@ public class VoucherUsageFragment extends BaseFragment implements View.OnClickLi
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_voucher_usage, container, false);
 
-        initComponents();
-
+        setupListener();
         setupViewWithData();
 
         return binding.getRoot();
@@ -72,31 +62,14 @@ public class VoucherUsageFragment extends BaseFragment implements View.OnClickLi
                 .asBitmap()
                 .transform(new CenterCrop(), new RoundedCorners(32))
                 .load(item.getImgUrl())
-                .into(ivItem);
+                .into(binding.ivVoucherUsageItem);
 
         //todo code data entry
     }
 
     @Override
-    public void initComponents() {
-        bindComponents();
-        setupListener();
-    }
-
-    @Override
-    public void bindComponents() {
-        //toolbar
-        tvToolbarTitle = binding.toolbarVoucherUsage.tvTitle;
-        ivBackBtn = binding.toolbarVoucherUsage.ibBack;
-        //content
-        ivItem = binding.ivVoucherUsageItem;
-        tvItemTitle = binding.tvVoucherUsageItemTitle;
-        tvItemCode = binding.tvVoucherUsageItemCode;
-    }
-
-    @Override
     public void setupListener() {
-        ivBackBtn.setOnClickListener(this);
+        binding.toolbarVoucherUsage.ibBack.setOnClickListener(this);
         binding.btnVoucherUse.setOnClickListener(this);
     }
 

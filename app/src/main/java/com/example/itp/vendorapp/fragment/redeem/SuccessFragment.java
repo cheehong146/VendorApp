@@ -23,13 +23,6 @@ public class SuccessFragment extends BaseFragment {
     String bodyMsg;
     String subBodyMsg;
 
-    TextView tvToolbarTitle;
-    ImageButton ibBackBtn;
-    TextView tvTitle;
-    TextView tvHeaderMsg;
-    TextView tvBodyMsg;
-    TextView tvSubBodyMsg;
-
     FragmentSuccessBinding binding;
 
     public static SuccessFragment newInstance(String toolbarTitle, String title, String headerMsg, String bodyMsg, String subBodyMsg) {
@@ -64,39 +57,23 @@ public class SuccessFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_success, container, false);
 
-        initComponents();
+        setupListener();
         setupViewsWithData();
 
         return binding.getRoot();
     }
 
     private void setupViewsWithData() {
-        tvToolbarTitle.setText(toolbarTitle);
-        tvTitle.setText(title);
-        tvHeaderMsg.setText(headerMsg);
-        tvBodyMsg.setText(bodyMsg);
-        tvSubBodyMsg.setText(subBodyMsg);
-    }
-
-    @Override
-    public void initComponents() {
-        bindComponents();
-        setupListener();
-    }
-
-    @Override
-    public void bindComponents() {
-        ibBackBtn = binding.toolbarSuccessPage.ibBack;
-        tvToolbarTitle = binding.toolbarSuccessPage.tvTitle;
-        tvTitle = binding.tvSuccessPageTitle;
-        tvHeaderMsg = binding.tvSuccessHeader;
-        tvBodyMsg = binding.tvSuccessBody;
-        tvSubBodyMsg = binding.tvSuccessBodySecondary;
+        binding.toolbarSuccessPage.tvTitle.setText(toolbarTitle);
+        binding.tvSuccessPageTitle.setText(title);
+        binding.tvSuccessHeader.setText(headerMsg);
+        binding.tvSuccessBody.setText(bodyMsg);
+        binding.tvSuccessBodySecondary.setText(subBodyMsg);
     }
 
     @Override
     public void setupListener() {
-        ibBackBtn.setOnClickListener(this);
+        binding.toolbarSuccessPage.ibBack.setOnClickListener(this);
     }
 
     @Override

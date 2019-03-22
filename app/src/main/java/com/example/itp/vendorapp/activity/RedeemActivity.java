@@ -121,11 +121,6 @@ public class RedeemActivity extends BaseActivity {
     }
 
     @Override
-    public void onClick(View v) {
-
-    }
-
-    @Override
     public void setupListener() {
     }
 

@@ -10,11 +10,12 @@
     <string name="text_signup_instagram2">Log In</string>
     <string name="text_login_email">Login with email</string>
     <string name="login">LOGIN</string>
-    <string name="or">OR</string>
 
-    <!--facebook api id-->
-    <string name="facebook_app_id">496526990877649</string>
-    <string name="fb_login_protocol_scheme">fb496526990877649</string>
+    <!--facebook api key-->
+    <string name="facebook_app_id">388903234995235</string>
+    <string name="fb_login_protocol_scheme">fb388903234995235</string>
+
+    <!--login page-->
     <string name="password">Password</string>
     <string name="email_address">Email Address</string>
     <string name="forget_password">Forget Password?</string>
@@ -46,4 +47,7 @@ Sed ullamcorper aliquam arcu ut viverra. Maecenas quis euismod nulla. In vitae d
     <string name="terms_and_conditions">Terms and Conditions</string>
     <string name="links">Links</string>
     <string name="logout">Logout</string>
+    <string name="profile">Profile</string>
+    <string name="agreeing_terms_condition"><![CDATA[I have read and agreed to the terms & condition]]></string>
+    <string name="or">OR</string>
 </resources>

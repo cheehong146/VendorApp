@@ -24,16 +24,6 @@ import com.example.itp.vendorapp.model.VoucherItem;
 
 public class VoucherFragment extends BaseFragment implements View.OnClickListener {
 
-
-    //toolbar
-    TextView tvToolbarTitle;
-    ImageButton ibBackBtn;
-
-    //customer card
-
-    //content
-    RecyclerView rvVoucher;
-
     //dummy data
     List<VoucherItem> vouchers;
 
@@ -63,7 +53,7 @@ public class VoucherFragment extends BaseFragment implements View.OnClickListene
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_voucher, container, false);
 
-        initComponents();
+        setupListener();
         setupVoucherRv();
         return binding.getRoot();
     }
@@ -78,26 +68,13 @@ public class VoucherFragment extends BaseFragment implements View.OnClickListene
             }
         });
 
-        rvVoucher.setAdapter(voucherAdapter);
-        rvVoucher.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-    }
-
-    @Override
-    public void initComponents() {
-        bindComponents();
-        setupListener();
-    }
-
-    @Override
-    public void bindComponents() {
-        ibBackBtn = binding.toolbarVoucher.ibBack;
-        tvToolbarTitle = binding.toolbarVoucher.tvTitle;
-        rvVoucher = binding.rvVoucher;
+        binding.rvVoucher.setAdapter(voucherAdapter);
+        binding.rvVoucher.setLayoutManager(new GridLayoutManager(getActivity(), 2));
     }
 
     @Override
     public void setupListener() {
-        ibBackBtn.setOnClickListener(this);
+        binding.toolbarVoucher.ibBack.setOnClickListener(this);
     }
 
     @Override

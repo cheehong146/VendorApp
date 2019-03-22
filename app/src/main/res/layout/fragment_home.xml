@@ -10,7 +10,7 @@
 
         <include
             android:id="@+id/toolbar_home"
-            layout="@layout/toolbar_home"
+            layout="@layout/toolbar_title_only"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
