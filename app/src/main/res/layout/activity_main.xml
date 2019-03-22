@@ -8,26 +8,27 @@
 
         <FrameLayout
             android:id="@+id/frame_main_activity"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/nav_bar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="0dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/nav_bar"
-            app:itemIconTint="@color/colorPrimary"
-            app:itemTextColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_btm_nav_bg"
+            android:foreground="?attr/selectableItemBackground"
+            app:itemIconTint="@color/color_btm_nav_icon"
+            app:itemTextColor="@color/color_btm_nav_icon"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/tab_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?android:attr/windowBackground"
-            android:foreground="?attr/selectableItemBackground" />
+            app:menu="@menu/tab_menu" />
+        <!--android:background="?android:attr/windowBackground"-->
 
     </android.support.constraint.ConstraintLayout>
 </layout>

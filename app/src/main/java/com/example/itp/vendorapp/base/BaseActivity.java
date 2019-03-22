@@ -17,6 +17,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public FragmentHelper fragmentHelper = new FragmentHelper(this);
 
     public void startNewActivityWithFinish(Activity toFinish, Class goToClass) {
+        finish();
         startActivity(new Intent(toFinish, goToClass));
     }
 

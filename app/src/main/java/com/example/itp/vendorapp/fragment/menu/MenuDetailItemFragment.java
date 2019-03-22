@@ -8,8 +8,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
@@ -21,13 +19,8 @@ import com.example.itp.vendorapp.model.MenuDetail;
 
 public class MenuDetailItemFragment extends BaseFragment {
 
-    private MenuDetail menuDetail;
-
-    ImageView ivMenuDetailItem;
-    TextView tvMenuDetailItemTitle, tvMenuDetailItemDesc;
-    TextView tvDetailItemPrice;
-
     FragmentMenuDetailItemBinding binding;
+    private MenuDetail menuDetail;
 
     public static MenuDetailItemFragment newInstance(MenuDetail menuDetail) {
         Bundle args = new Bundle();
@@ -64,21 +57,21 @@ public class MenuDetailItemFragment extends BaseFragment {
     }
 
     private void setupViewsData() {
-        tvMenuDetailItemTitle.setText(menuDetail.getName());
-        tvMenuDetailItemDesc.setText(menuDetail.getDescription());
+        binding.tvMenuDetailTitle.setText(menuDetail.getName());
+        binding.tvMenuDetailDesc.setText(menuDetail.getDescription());
 
         if (shouldPriceViewAppear(menuDetail)) {
-            tvDetailItemPrice.setVisibility(View.VISIBLE);
-            tvDetailItemPrice.setText(menuDetail.getPrice());
+            binding.tvMenuDetailPrice.setVisibility(View.VISIBLE);
+            binding.tvMenuDetailPrice.setText(menuDetail.getPrice());
         } else {
-            tvDetailItemPrice.setVisibility(View.GONE);
+            binding.tvMenuDetailPrice.setVisibility(View.GONE);
         }
 
         Glide.with(this)
                 .asBitmap()
                 .transform(new CenterCrop())
                 .load(menuDetail.getImgUrl())
-                .into(ivMenuDetailItem);
+                .into(binding.ivMenuDetail);
 
     }
 

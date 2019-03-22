@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#484A5D</color>
+    <color name="colorPrimary">#4B4D60</color>
     <color name="colorPrimaryDark">#484A5D</color>
     <color name="colorAccent">#D81B60</color>
 
@@ -14,13 +14,19 @@
     <color name="color_facebook_login_btn_bg">#3A5A98</color>
     <color name="color_login_edit_text_lines">#707070</color>
     <color name="color_login_terms_condition_checkbox">#DBDCDF</color>
+    <color name="color_sign_up_profile_pic_border">#707070</color>
+    <color name="color_sign_up_profile_pic_add_bg">#5C6072</color>
 
     <!--Home page-->
     <!--Promotion color-->
     <color name="color_promotion_valid_bg">#EE2b32</color>
     <color name="color_promotion_text">#FFF</color>
     <color name="color_divider">#6E7385</color>
-    <color name="color_read_more">#FFF</color>
+    <color name="color_read_more">#FFF</color>\
+
+    <!--bottom nav bar color-->
+    <color name="color_btm_nav_bg">#11131C</color>
+    <color name="color_btm_nav_icon">#F2F2F3</color>
 
     <!--app theme text color-->
     <color name="color_text_white">#FFF</color>

@@ -7,19 +7,8 @@
         android:layout_height="500dp"
         android:background="@color/colorPrimary">
 
-        <!--<de.hdodenhof.circleimageview.CircleImageView-->
-        <!--android:id="@+id/civ_requests"-->
-        <!--android:layout_width="120dp"-->
-        <!--android:layout_height="120dp"-->
-        <!--android:layout_marginBottom="50dp"-->
-        <!--android:scaleType="fitCenter"-->
-        <!--android:src="@drawable/round_profile_picture"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintBottom_toTopOf="@+id/sign_in_form_container"/>-->
-
-        <ImageView
-            android:id="@+id/iv_sign_up_profile_pic"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_sign_up_profile_pic"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginStart="8dp"
@@ -28,11 +17,23 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="50dp"
-            android:src="@drawable/round_profile_picture"
+            android:src="@drawable/profile_picture"
+            app:civ_border_color="@color/color_sign_up_profile_pic_border"
+            app:civ_border_width="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageButton
+            android:id="@+id/ib_sign_up_add_profile_pic"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:shadowColor="@color/colorWhite"
+            android:src="@drawable/plus_icon"
+            app:layout_constraintBottom_toBottomOf="@id/civ_sign_up_profile_pic"
+            app:layout_constraintRight_toRightOf="@id/civ_sign_up_profile_pic" />
 
         <LinearLayout
             android:id="@+id/sign_in_form_container"
@@ -41,7 +42,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginBottom="30dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/iv_sign_up_profile_pic">
+            app:layout_constraintTop_toBottomOf="@id/civ_sign_up_profile_pic">
 
             <EditText
                 android:id="@+id/et_username"
@@ -75,9 +76,9 @@
             <TextView
                 android:id="@+id/tv_email_error"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="TEST"
                 android:textSize="12sp"
-                android:layout_height="wrap_content"
                 android:visibility="gone" />
 
             <EditText
@@ -99,9 +100,9 @@
 
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <CheckBox

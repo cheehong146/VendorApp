@@ -102,4 +102,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         fragmentHelper.replaceFragment(getChildFragmentManager(), fragment, frameLayout, fragNameInBackStack);
     }
 
+
+
 }

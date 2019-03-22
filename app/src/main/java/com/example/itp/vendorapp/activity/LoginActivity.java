@@ -86,7 +86,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
             @Override
             public void onLoginClick() {
-                startActivityClearTop(LoginActivity.this, MainActivity.class);
+                startNewActivityWithFinish(LoginActivity.this, MainActivity.class);
             }
 
             @Override
