@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.BaseFragment;
 import com.example.itp.vendorapp.databinding.FragmentSignInBinding;
+import com.facebook.login.widget.LoginButton;
 
 public class SignInFragment extends BaseFragment {
 
@@ -46,7 +47,9 @@ public class SignInFragment extends BaseFragment {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_facebook_login:
-                listener.onFacebookLoginClick();
+                //facebook btn init in java code is due to the facebook api needs a LoginButton, but due to customization issue,
+                //link between a normal Button onClick calls LoginButton onClick
+                listener.onFacebookLoginClick(getInstanceFbLoginBtn());
                 break;
             case R.id.btn_login:
                 listener.onLoginClick();
@@ -54,6 +57,11 @@ public class SignInFragment extends BaseFragment {
             case R.id.tv_forget_pass:
                 listener.onForgetPasswordClick();
         }
+    }
+
+    private LoginButton getInstanceFbLoginBtn() {
+        LoginButton loginButton = new LoginButton(getContext());
+        return loginButton;
     }
 
     /**
@@ -66,7 +74,7 @@ public class SignInFragment extends BaseFragment {
     }
 
     public interface FragmentListener {
-        void onFacebookLoginClick();
+        void onFacebookLoginClick(LoginButton fbLoginButton);
 
         void onLoginClick();
 

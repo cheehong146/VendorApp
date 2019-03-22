@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -11,26 +12,29 @@
         <TextView
             android:id="@+id/tv_home_header_available_points"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="13dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:text="Available Points"
             android:textColor="@color/color_promotion_text"
             android:textSize="12sp"
-            tools:layout_editor_absoluteX="311dp"
-            tools:layout_editor_absoluteY="8dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_home_header_points_val"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:text="9999"
             android:textColor="@color/color_promotion_text"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textView2"
             app:layout_constraintEnd_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/tv_home_header_available_points" />
+            app:layout_constraintTop_toTopOf="@+id/textView2" />
 
         <TextView
             android:id="@+id/tv_home_header_username"
@@ -50,12 +54,11 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:textSize="18sp"
             android:text="Points"
             android:textColor="@color/color_text_white"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_home_header_points_val"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_home_header_available_points" />
 

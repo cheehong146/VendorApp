@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.BaseActivity;
@@ -13,28 +14,29 @@ import com.example.itp.vendorapp.databinding.ActivityLoginBinding;
 import com.example.itp.vendorapp.fragment.login.SignInFragment;
 import com.example.itp.vendorapp.fragment.login.SignUpFragment;
 import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.google.gson.JsonObject;
+import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Arrays;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "LoginActivity";
 
-//    /**
-//     * callback for facebook login api
-//     */
-//    CallbackManager callbackManager;
+    /**
+     * callback for facebook login api
+     */
+    CallbackManager callbackManager;
+    boolean isFbCallbackSetup = false;
+
+    String accessTokenStr;
 
     ActivityLoginBinding binding;
 
@@ -43,20 +45,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
 
-//        callbackManager = CallbackManager.Factory.create();
-
         setupListener();
-//        setupFacebookLogin();
-
         initSignInFragment();
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-//        callbackManager.onActivityResult(requestCode, resultCode, data);
-    }
 
     @Override
     public void setupListener() {
@@ -81,8 +74,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         SignInFragment signInFragment = SignInFragment.newInstance();
         signInFragment.setupListener(new SignInFragment.FragmentListener() {
             @Override
-            public void onFacebookLoginClick() {
+            public void onFacebookLoginClick(LoginButton fbLoginButton) {
                 //TODO FB login
+                //simulate a click on facebook login button and set callback, to retrieve user facebook data
+                if (!isFbCallbackSetup) {
+                    setFbLoginCallback(fbLoginButton);
+                    isFbCallbackSetup = true;
+                }
+                fbLoginButton.performClick();
             }
 
             @Override
@@ -95,56 +94,102 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
             }
         });
-        fragmentHelper.initFragment(getSupportFragmentManager(), signInFragment, R.id.frame_login);
+        fragmentHelper.initFragment(
+
+                getSupportFragmentManager(), signInFragment, R.id.frame_login);
     }
 
-    private void setSignUpFragment(){
+    private void setSignUpFragment() {
         SignUpFragment signUpFragment = SignUpFragment.newInstance();
         fragmentHelper.replaceFragment(getSupportFragmentManager(), signUpFragment, R.id.frame_login, "SignUpFragment");
     }
 
-//    private void setupFacebookLogin() {
-//        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-//            @Override
-//            public void onSuccess(LoginResult loginResult) {
-//                //TODO finish facebook login
+    private void setFbLoginCallback(LoginButton fbLoginButton) {
+        callbackManager = CallbackManager.Factory.create();
+        fbLoginButton.setReadPermissions("public_profile", "email");
+
+        AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+                if (currentAccessToken != null) {
+                    //users is logged in
+                    toastMsg("user is logged in ", false);
+                    accessTokenStr = currentAccessToken.getToken();
+                    loadUserProfile(currentAccessToken);
+                } else {
+                    //users is logged out
+                    toastMsg("user is logged out ", false);
+                    accessTokenStr = oldAccessToken.getToken();
+//                    facebookListItem.setFb_token(oldAccessToken.getToken());
+                }
+            }
+        };
+
+        fbLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                AccessToken accessToken = loginResult.getAccessToken();
+                loadUserProfile(accessToken);
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    /**
+     * init a new GraphRequest to get users data from an accessToken
+     *
+     * @param accessToken
+     */
+    private void loadUserProfile(AccessToken accessToken) {
+        GraphRequest graphRequest = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
+            @Override
+            public void onCompleted(JSONObject object, GraphResponse response) {
+                try {
+                    //Get user data from facebook API here
+                    String firstName = object.getString("first_name");
+                    String lastName = object.getString("last_name");
+                    String email = object.getString("email");
+                    String id = object.getString("id");
+                    String profilePicUrl = "https://graph.facebook.com/" + id + "/picture?type=normal";
+
+
+                    Log.d(TAG, "loadUserProfile: " + id);
+                    Log.d(TAG, "loadUserProfile: " + firstName);
+                    Log.d(TAG, "loadUserProfile: " + lastName);
+                    Log.d(TAG, "loadUserProfile: " + email);
+                    Log.d(TAG, "loadUserProfile: " + profilePicUrl);
+                } catch (JSONException e) {
+                    e.printStackTrace();//TODO EH
+                }
+            }
+        });
+        Bundle args = new Bundle();
+        args.putString("fields", "id, name, first_name, last_name, email, gender, birthday, picture.type(large)");
+        graphRequest.setParameters(args);
+        graphRequest.executeAsync();
+    }
+
+
+//    private void onSuccessfulLogin(LoginUser user){
 //
-//                AccessToken accessToken = loginResult.getAccessToken();
-//                GraphRequest graphRequest = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
-//                    @Override
-//                    public void onCompleted(JSONObject object, GraphResponse response) {
-//                        parseFacebookUserData(object);
-//                    }
-//                });
-//
-//                Bundle args = new Bundle();
-//                args.putString("fields", "id, name, first_name, last_name, email, gender, birthday, picture.type(large)");
-//                graphRequest.setParameters(args);
-//                graphRequest.executeAsync();
-//            }
-//
-//            @Override
-//            public void onCancel() {
-//
-//            }
-//
-//            @Override
-//            public void onError(FacebookException error) {
-//
-//            }
-//        });
 //    }
 
-//    private void parseFacebookUserData(JSONObject object) {
-//        try {
-//            Log.d(TAG, "parseFacebookUserData: " + object.getString("id"));
-//            Log.d(TAG, "parseFacebookUserData: " + object.getString("name"));
-//            Log.d(TAG, "parseFacebookUserData: " + object.getString("email"));
-//            Log.d(TAG, "parseFacebookUserData: " + object.get("birthday"));
-//
-//            object.getJSONObject("picture").getJSONObject("data").getString("url");
-//        } catch (JSONException e) {
-//            e.printStackTrace();//TODO EH
-//        }
-//    }
+//    TODO implement a login user model based on api
+
+
 }

@@ -3,20 +3,9 @@ package com.example.itp.vendorapp.activity;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.GridLayout;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -27,7 +16,6 @@ import com.example.itp.vendorapp.databinding.ActivityLocationBinding;
 import com.example.itp.vendorapp.utils.UIDimensionUtils;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -35,21 +23,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class LocationActivity extends BaseActivity implements View.OnClickListener {
     private GoogleMap mMap;
-
-    private static final String TAG = "LocationActivity";
-
-    //toolbar
-    TextView tvToolbarTitle;
-    ImageButton ibBackBtn;
-    //footer, vendor related
-    TextView tvVendorName;
-    TextView tvVendorAddress;
-    TextView tvVendorPhoneNum;
-    //footer, vendor bottom section
-    GridLayout gridVendorDateTimeOperation;
-    Button btnNavigate;
-    //footer, map related
-    TextView tvDistance;
 
     BottomSheetBehavior bottomSheetBehavior;
 
@@ -134,18 +107,11 @@ public class LocationActivity extends BaseActivity implements View.OnClickListen
     }
 
     @Override
-    public void bindComponents() {
-        ibBackBtn = binding.toolbarLocation.ibBack;
-        btnNavigate = binding.locationBottomMasterSheet.locationFooterSecondary.btnLocationNavigate;
-        bottomSheetBehavior = BottomSheetBehavior.from(binding.locationBottomSheet);
-    }
-
-    @Override
     public void setupListener() {
         //toolbar
-        ibBackBtn.setOnClickListener(this);
+        binding.toolbarLocation.ibBack.setOnClickListener(this);
         //footer
-        btnNavigate.setOnClickListener(this);
+        binding.locationBottomMasterSheet.locationFooterSecondary.btnLocationNavigate.setOnClickListener(this);
 
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
