@@ -2,9 +2,10 @@ package com.example.itp.vendorapp.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.MenuItem;
 
 import com.example.itp.vendorapp.CONSTANTS;
@@ -13,6 +14,7 @@ import com.example.itp.vendorapp.base.BaseActivity;
 import com.example.itp.vendorapp.base.helpers.FragmentHelper;
 import com.example.itp.vendorapp.databinding.ActivityMainBinding;
 import com.example.itp.vendorapp.fragment.home.HomeParentFragment;
+import com.example.itp.vendorapp.fragment.home.PromotionDetailFragment;
 import com.example.itp.vendorapp.model.Customer;
 import com.example.itp.vendorapp.model.PromotionItem;
 
@@ -71,7 +73,6 @@ public class MainActivity extends BaseActivity {
                         startNewActivityWithoutFinish(new Intent(MainActivity.this, MenuActivity.class));
                         return true;
                     case R.id.menu_item_redeem:
-//                        startActivityClearTop(MainActivity.this, RedeemActivity.class);
                         startNewActivityWithoutFinish(new Intent(MainActivity.this, RedeemActivity.class));
                         return true;
                     case R.id.menu_item_voucher:
@@ -97,7 +98,14 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        getSupportFragmentManager();
+        Fragment homeParentFrag = getSupportFragmentManager().findFragmentByTag(CONSTANTS.HOME_PARENT_FRAGMENT);
+        Fragment promotionDetailFrag = homeParentFrag.getChildFragmentManager().findFragmentByTag(CONSTANTS.PROMOTION_DETAIL_FRAGMENT);
+        if (promotionDetailFrag instanceof PromotionDetailFragment) {
+            homeParentFrag.getChildFragmentManager().popBackStack();
+        } else {
+            doubleBackToClose();
+        }
+
     }
 
     //Dummy data generator

@@ -1,7 +1,6 @@
 package com.example.itp.vendorapp.base;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,11 +9,8 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.helpers.FragmentHelper;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
@@ -22,14 +18,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     private static final String TAG = "BaseActivity";
 
     public final String SHARED_PREF_USER = "UserDataFile";
-
-    //for double tap on back to close
-    boolean close;
-
     //loading dialog related
     public KProgressHUD hud;
-
     public FragmentHelper fragmentHelper = new FragmentHelper(this);
+    //for double tap on back to close
+    boolean close;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,7 +71,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public void toastMsg(String msg, boolean isLongToast) {
         final int TOAST_LENGTH = isLongToast ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT;
-        Toast.makeText(this, msg, TOAST_LENGTH);
+        Toast.makeText(this, msg, TOAST_LENGTH).show();
     }
 
     /**
@@ -153,8 +146,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         }, 2000);
     }
 
-    public boolean isCurFragmentInFrame(int frameId, String fragName){
-        if(getSupportFragmentManager().findFragmentByTag(fragName).equals("")){
+    public boolean isCurFragmentInFrame(int frameId, String fragName) {
+        if (getSupportFragmentManager().findFragmentByTag(fragName).equals("")) {
 
         }
         return false;

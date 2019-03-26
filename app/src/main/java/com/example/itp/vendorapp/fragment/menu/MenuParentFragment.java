@@ -19,8 +19,6 @@ import java.util.ArrayList;
 
 public class MenuParentFragment extends BaseFragment {
 
-    private static final String TAG = "MenuParentFragment";
-
     FragmentMenuParentBinding binding;
 
     ArrayList<Menu> menuArrayList;
@@ -75,7 +73,7 @@ public class MenuParentFragment extends BaseFragment {
                         popFragment();
                     }
                 });
-                replaceFragment(fragment, R.id.frame_menu_parent, "MenuDetail");
+                replaceFragment(fragment, R.id.frame_menu_parent, CONSTANTS.MENU_DETAIL_FRAGMENT);
             }
         });
         initFragment(menuFragment, R.id.frame_menu_parent, CONSTANTS.MENU_FRAGMENT);

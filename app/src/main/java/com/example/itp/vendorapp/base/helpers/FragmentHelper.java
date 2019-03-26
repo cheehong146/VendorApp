@@ -43,12 +43,12 @@ public class FragmentHelper {
         ft.commit();
     }
 
-    public void replaceFragment(FragmentManager fm, Fragment fragment, int frameLayout, String fragNameInBackStack) {
+    public void replaceFragment(FragmentManager fm, Fragment fragment, int frameLayout, String fragName) {
         FragmentTransaction ft = fm.beginTransaction();
 
         //replacing curring frag
-        ft.replace(frameLayout, fragment);
-        ft.addToBackStack(fragNameInBackStack);
+        ft.replace(frameLayout, fragment, fragName);
+        ft.addToBackStack(null);
         ft.commit();
     }
 
