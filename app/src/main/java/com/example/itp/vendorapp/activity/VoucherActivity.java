@@ -3,11 +3,7 @@ package com.example.itp.vendorapp.activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.BaseActivity;
@@ -23,8 +19,6 @@ import java.util.List;
 
 public class VoucherActivity extends BaseActivity {
     private static final String TAG = "VoucherActivity";
-
-    RecyclerView rvVoucher;
 
     ActivityVoucherBinding binding;
 
