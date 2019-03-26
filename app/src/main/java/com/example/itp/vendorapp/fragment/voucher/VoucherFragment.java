@@ -9,15 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.adapter.VoucherAdapter;
 import com.example.itp.vendorapp.base.BaseFragment;
+import com.example.itp.vendorapp.databinding.FragmentVoucherBinding;
+import com.example.itp.vendorapp.model.VoucherItem;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.example.itp.vendorapp.R;
-import com.example.itp.vendorapp.databinding.FragmentVoucherBinding;
-import com.example.itp.vendorapp.model.VoucherItem;
 
 public class VoucherFragment extends BaseFragment implements View.OnClickListener {
 
@@ -25,6 +24,10 @@ public class VoucherFragment extends BaseFragment implements View.OnClickListene
     List<VoucherItem> vouchers;
 
     FragmentVoucherBinding binding;
+    /**
+     * Listener declaration and callback methods
+     **/
+    FragmentListener listener;
 
     public static VoucherFragment newInstance(List<VoucherItem> voucherItemList) {
         Bundle args = new Bundle();
@@ -55,7 +58,6 @@ public class VoucherFragment extends BaseFragment implements View.OnClickListene
         return binding.getRoot();
     }
 
-
     private void setupVoucherRv() {
         VoucherAdapter voucherAdapter = new VoucherAdapter(vouchers, getActivity());
         voucherAdapter.setupListener(new VoucherAdapter.FragmentListener() {
@@ -72,6 +74,7 @@ public class VoucherFragment extends BaseFragment implements View.OnClickListene
     @Override
     public void setupListener() {
         binding.toolbarVoucher.ibBack.setOnClickListener(this);
+        binding.customerHeader.civHomeHeaderProfilePic.setOnClickListener(this);
     }
 
     @Override
@@ -80,15 +83,10 @@ public class VoucherFragment extends BaseFragment implements View.OnClickListene
             case R.id.ib_back:
                 listener.back();
                 break;
-            case R.id.civ_customer_card_profile_pic:
+            case R.id.civ_home_header_profile_pic:
                 listener.goToProfile();
         }
     }
-
-    /**
-     * Listener declaration and callback methods
-     **/
-    FragmentListener listener;
 
     public void setupListener(FragmentListener listener) {
         this.listener = listener;
