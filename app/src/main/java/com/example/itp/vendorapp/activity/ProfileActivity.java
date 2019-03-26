@@ -76,6 +76,11 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
 //        binding.customerCardProfile.ivCustomerCardUsername = customer
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     private List<Transaction> getTransactionDummyData() {
         ArrayList<Transaction> transactions = new ArrayList<>();
         for (int i = 0; i < 5; i++) {

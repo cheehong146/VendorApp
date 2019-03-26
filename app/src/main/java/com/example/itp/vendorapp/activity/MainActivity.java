@@ -89,6 +89,8 @@ public class MainActivity extends BaseActivity {
         });
     }
 
+
+
     private Intent getProfileIntent(Customer customer) {
         Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
         intent.putExtra("customer", customer);
