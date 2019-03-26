@@ -7,6 +7,7 @@ public class CONSTANTS {
     public final static String HOME_FRAGMENT = "HomeFragment";
     public final static String SIGN_IN_FRAGMENT = "SignInFragment";
     public final static String SIGN_UP_FRAGMENT = "SignUpFragment";
+    public final static String MENU_PARENT_FRAGMENT = "MenuParentFragment";
     public final static String MENU_FRAGMENT = "MenuFragment";
     public final static String MENU_DETAIL_FRAGMENT = "MenuDetailFragment";
     public final static String REDEEM_PARENT_FRAGMENT = "RedeemParentFragment";

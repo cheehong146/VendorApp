@@ -2,6 +2,7 @@ package com.example.itp.vendorapp.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
 import com.example.itp.vendorapp.CONSTANTS;
 import com.example.itp.vendorapp.R;
@@ -34,13 +35,21 @@ public class MenuActivity extends BaseActivity {
     }
 
     @Override
-    public void bindComponents() {
+    public void setupListener() {
 
     }
 
     @Override
-    public void setupListener() {
+    public void onBackPressed() {
+        Fragment menuParentFragment = getSupportFragmentManager().findFragmentByTag(CONSTANTS.MENU_FRAGMENT);
 
+        if (menuParentFragment.getChildFragmentManager().getBackStackEntryCount() > 0) {
+            //menuDetailFragment will be added to backstack if it replaced the menuFragment, pop it
+            fragmentHelper.popFragment(menuParentFragment.getChildFragmentManager());
+        } else {
+            //go back to MainActivity
+            super.onBackPressed();
+        }
     }
 
     private void initFirstFragment(ArrayList<Menu> menuArrayList) {

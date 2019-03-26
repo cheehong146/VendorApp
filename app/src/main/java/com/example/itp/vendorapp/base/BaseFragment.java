@@ -97,7 +97,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
      *
      * @param fragment
      * @param frameLayout
-     * @param fragNameInBackStack
+     * @param fragName
      */
     public void replaceFragment(Fragment fragment, int frameLayout, String fragName) {
         fragmentHelper.replaceFragment(getChildFragmentManager(), fragment, frameLayout, fragName);

@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity {
         homeParentFragment.setupListener(new HomeParentFragment.FragmentListener() {
             @Override
             public void goToProfile() {
-                startNewActivityWithoutFinish(getProfileIntent(getDummyCustomer()));
+                startActivityClearTop(getProfileIntent(getDummyCustomer()));
             }
         });
 

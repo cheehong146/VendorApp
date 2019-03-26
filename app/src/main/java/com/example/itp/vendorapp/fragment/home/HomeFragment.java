@@ -145,11 +145,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         binding.customerHeader.tvHomeHeaderUsername.setText(customer.getUsername());
         binding.customerHeader.tvHomeHeaderPointsVal.setText(customer.getPoints());
 
-        Glide.with(this)
-                .asBitmap()
-                .transform(new CenterCrop(), new CircleCrop())
-                .load(customer.getImgUrl())
-                .into(binding.customerHeader.civHomeHeaderProfilePic);
+//        Glide.with(this)TODO LOAD DEFAULT IMAGE IF GLIDE FAILS
+//                .asBitmap()
+//                .transform(new CenterCrop(), new CircleCrop())
+//                .load(customer.getImgUrl())
+//                .into(binding.customerHeader.civHomeHeaderProfilePic);
     }
 
 

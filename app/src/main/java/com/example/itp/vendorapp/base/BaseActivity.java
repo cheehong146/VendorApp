@@ -52,6 +52,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
+     * Destroy all activity after the goToClass init and re-init it
+     *
+     * @param intent
+     */
+    public void startActivityClearTop(Intent intent) {
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+
+    /**
      * Destroy all activity after the goToClass init; brings back the goToClass activity without being re-init
      *
      * @param context   cur Context
