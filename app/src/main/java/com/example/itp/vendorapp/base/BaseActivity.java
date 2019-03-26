@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.itp.vendorapp.base.helpers.FragmentHelper;
+import com.kaopiz.kprogresshud.KProgressHUD;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -44,8 +45,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * toast a msg
      *
-     * @param msg
-     * @param isLongToast
+     * @param msg   the message to be displayed
+     * @param isLongToast true for long toast, false for short toast
      */
     public void toastMsg(String msg, boolean isLongToast) {
         final int TOAST_LENGTH = isLongToast ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT;
@@ -63,6 +64,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = getSharedPreferences(sharedPrefFile, MODE_PRIVATE).edit();
         editor.putString(dataKey, dataValue);
         editor.apply();
+    }
+
+    public void createKProgressHUD(Context context) {
+        KProgressHUD.create(context)
+                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                .setLabel("Loading...")
+                .setCancellable(true)
+                .setAnimationSpeed(2)
+                .setDimAmount(0.2f)
+                .show();
     }
 
 

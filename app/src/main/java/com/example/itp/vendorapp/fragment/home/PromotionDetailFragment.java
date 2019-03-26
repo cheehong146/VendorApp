@@ -16,7 +16,6 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.itp.vendorapp.R;
-import com.example.itp.vendorapp.base.BaseFragment;
 import com.example.itp.vendorapp.model.Customer;
 import com.example.itp.vendorapp.model.PromotionItem;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
@@ -37,7 +36,7 @@ public class PromotionDetailFragment extends Fragment implements View.OnClickLis
     //customer header ui view
     TextView tvCustomerUsername;
     TextView tvCustomerAvailablePoints;
-    ImageView ivCustomerProfilePicture;
+    ImageView civCustomerProfilePicture;
 
     //content ui view
     TextView tvFoodName, tvValidDate;
@@ -100,7 +99,7 @@ public class PromotionDetailFragment extends Fragment implements View.OnClickLis
                 .asBitmap()
                 .transform(new CenterCrop(), new CircleCrop())
                 .load(customer.getImgUrl())
-                .into(ivCustomerProfilePicture);
+                .into(civCustomerProfilePicture);
     }
 
     private void setupContentData() {
@@ -130,7 +129,7 @@ public class PromotionDetailFragment extends Fragment implements View.OnClickLis
         View customerHeader = view.findViewById(R.id.customer_header);
         tvCustomerUsername = customerHeader.findViewById(R.id.tv_home_header_username);
         tvCustomerAvailablePoints = customerHeader.findViewById(R.id.tv_home_header_points_val);
-        ivCustomerProfilePicture = customerHeader.findViewById(R.id.civ_home_header_profile_pic);
+        civCustomerProfilePicture = customerHeader.findViewById(R.id.civ_home_header_profile_pic);
         //content
         tvFoodName = view.findViewById(R.id.tv_promotion_detailed_title);
         ivFoodImage = view.findViewById(R.id.iv_promotion_detailed);
@@ -145,9 +144,7 @@ public class PromotionDetailFragment extends Fragment implements View.OnClickLis
         ibToolbarBack.setOnClickListener(this);
 
         //customer header
-//        tvCustomerUsername.setOnClickListener(this);
-//        tvCustomerAvailablePoints.setOnClickListener(this); TODO determine if user can click on available point to go to profile
-////        ivCustomerProfilePicture.setOnClickListener(this);
+        civCustomerProfilePicture.setOnClickListener(this);
     }
 
     @Override
@@ -155,7 +152,10 @@ public class PromotionDetailFragment extends Fragment implements View.OnClickLis
         switch (v.getId()) {
             case R.id.ib_back:
                 listener.back();
+                ibToolbarBack.setEnabled(false);
                 break;
+            case R.id.civ_home_header_profile_pic:
+                listener.goToProfile();
         }
     }
 
@@ -170,6 +170,8 @@ public class PromotionDetailFragment extends Fragment implements View.OnClickLis
     }
 
     public interface FragmentListener {
+        void goToProfile();
+
         void back();
     }
 }

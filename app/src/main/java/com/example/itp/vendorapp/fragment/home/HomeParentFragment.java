@@ -30,8 +30,6 @@ public class HomeParentFragment extends BaseFragment {
 
     FragmentHomeParentBinding binding;
 
-    FrameLayout frameHomeParent;
-
     public static HomeParentFragment newInstance(Customer customer, List<PromotionItem> promotionList) {
         Bundle args = new Bundle();
         args.putParcelable("customer", customer);
@@ -77,7 +75,7 @@ public class HomeParentFragment extends BaseFragment {
 
             @Override
             public void onProfileClick() {
-                listener.onProfileClick();
+                listener.goToProfile();
             }
         });
         initFragment(homeFragment, R.id.frame_home_parent);
@@ -86,13 +84,18 @@ public class HomeParentFragment extends BaseFragment {
     /**
      * init promotion item(from item that the user clicks) and setup listener
      *
-     * @param item
-     * @return
+     * @param item  the promotion detail item model
+     * @return   return a PromotionDetailFragment
      */
     private PromotionDetailFragment initPromotionDetailFragment(PromotionItem item) {
         PromotionDetailFragment fragment = PromotionDetailFragment.newInstance(customer, item, "Lekkers Cafe");//TODO fix hardcode of vendor cafe
 
         fragment.setupListener(new PromotionDetailFragment.FragmentListener() {
+            @Override
+            public void goToProfile() {
+                listener.goToProfile();
+            }
+
             @Override
             public void back() {
                 //replace promotion item details with home fragment
@@ -110,6 +113,6 @@ public class HomeParentFragment extends BaseFragment {
     }
 
     public interface FragmentListener {
-        void onProfileClick();
+        void goToProfile();
     }
 }

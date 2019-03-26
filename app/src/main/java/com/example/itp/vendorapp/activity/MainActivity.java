@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity {
         HomeParentFragment homeParentFragment = HomeParentFragment.newInstance(getDummyCustomer(), getDummyData());
         homeParentFragment.setupListener(new HomeParentFragment.FragmentListener() {
             @Override
-            public void onProfileClick() {
+            public void goToProfile() {
                 startNewActivityWithoutFinish(getProfileIntent(getDummyCustomer()));
             }
         });
@@ -98,8 +98,8 @@ public class MainActivity extends BaseActivity {
 
     //Dummy data generator
     private Customer getDummyCustomer() {
-        Customer customer = new Customer("1", "Adam Settler", "https://www.morpht.com/sites/morpht/files/styles/landscape/public/dalibor-matura_1.jpg?itok=gxCAhwAV", "9999");
-        return customer;
+        return new Customer("1", "Adam Settler", "https://www.morpht.com/sites/morpht/files/styles/landscape/public/dalibor-matura_1.jpg?itok=gxCAhwAV", "9999");
+
     }
 
     private ArrayList<PromotionItem> getDummyData() {
