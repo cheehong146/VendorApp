@@ -130,7 +130,7 @@ public class PromotionDetailFragment extends Fragment implements View.OnClickLis
         View customerHeader = view.findViewById(R.id.customer_header);
         tvCustomerUsername = customerHeader.findViewById(R.id.tv_home_header_username);
         tvCustomerAvailablePoints = customerHeader.findViewById(R.id.tv_home_header_points_val);
-        ivCustomerProfilePicture = customerHeader.findViewById(R.id.iv_home_header_profile_pic);
+        ivCustomerProfilePicture = customerHeader.findViewById(R.id.civ_home_header_profile_pic);
         //content
         tvFoodName = view.findViewById(R.id.tv_promotion_detailed_title);
         ivFoodImage = view.findViewById(R.id.iv_promotion_detailed);

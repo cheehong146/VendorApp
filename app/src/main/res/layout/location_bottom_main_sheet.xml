@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="8dp">
 
         <RelativeLayout
             android:id="@+id/relativeLayout_arrow"
@@ -81,7 +82,6 @@
                     android:textColor="@color/color_text_white"
                     android:textSize="14sp" />
             </RelativeLayout>
-
 
 
         </RelativeLayout>

@@ -70,6 +70,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        //TODO implement double click to exit
+        toastMsg("TESTER", false);
+    }
+
     private void initSignInFragment() {
         SignInFragment signInFragment = SignInFragment.newInstance();
         signInFragment.setupListener(new SignInFragment.FragmentListener() {

@@ -1,9 +1,13 @@
 package com.example.itp.vendorapp.base;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
@@ -15,6 +19,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     public final String SHARED_PREF_USER = "UserDataFile";
 
     public FragmentHelper fragmentHelper = new FragmentHelper(this);
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     public void startNewActivityWithFinish(Activity toFinish, Class goToClass) {
         finish();

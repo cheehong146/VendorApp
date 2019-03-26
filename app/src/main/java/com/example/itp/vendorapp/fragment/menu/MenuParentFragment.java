@@ -82,11 +82,13 @@ public class MenuParentFragment extends BaseFragment {
 
     private ArrayList<MenuDetail> getMenuDetails(String menuId) {//TODO delete dummy data
         ArrayList<MenuDetail> arrayList = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            arrayList.add(new MenuDetail());
-        }
         switch (menuId) {
             case "1":
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+
                 arrayList.get(0).setName("Set Lunch Breakfast");
                 arrayList.get(0).setDescription("Sandwich with chicken meat & a cup of nescafe");
                 arrayList.get(0).setImgUrl("https://media-cdn.tripadvisor.com/media/photo-s/0e/e8/b5/86/coffee-and-sandwich.jpg");
@@ -105,6 +107,11 @@ public class MenuParentFragment extends BaseFragment {
                 arrayList.get(3).setImgUrl("https://peasandcrayons.com/wp-content/uploads/2012/10/homemade-sushi-tutorial-recipe-peas-and-crayons-1250.jpg");
                 break;
             case "2":
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+
                 arrayList.get(0).setName("Lemon Fish");
                 arrayList.get(0).setDescription("Fish with citrus of a lemon");
                 arrayList.get(0).setImgUrl("https://cdn.ruled.me/wp-content/uploads/2017/11/zingy-lemon-fish-featured.jpg");
@@ -124,6 +131,11 @@ public class MenuParentFragment extends BaseFragment {
                 arrayList.get(3).setImgUrl("https://gbc-cdn-public-media.azureedge.net/img48073.1426x713.jpg");
                 break;
             case "3":
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+
                 arrayList.get(0).setName("French Fries");
                 arrayList.get(0).setDescription("The classic french fries with a pinch of salt");
                 arrayList.get(0).setImgUrl("https://www.rewardsnetwork.com/wp-content/uploads/2017/12/FIRSTSnacksAsDaypart_1.jpg");
@@ -141,6 +153,9 @@ public class MenuParentFragment extends BaseFragment {
                 arrayList.get(3).setImgUrl("https://peasandcrayons.com/wp-content/uploads/2012/10/homemade-sushi-tutorial-recipe-peas-and-crayons-1250.jpg");
                 break;
             case "4":
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+
                 arrayList.get(0).setName("Curry Fried Rice");
                 arrayList.get(0).setDescription("Fried rice with a little dab of indian spice");
                 arrayList.get(0).setImgUrl("https://www-tc.pbs.org/food/wp-content/blogs.dir/2/files/2012/11/curry-fried-rice640x360.jpg");
@@ -150,6 +165,10 @@ public class MenuParentFragment extends BaseFragment {
                 arrayList.get(1).setImgUrl("https://natashaskitchen.com/wp-content/uploads/2018/09/Shrimp-Fried-Rice-3.jpg");
                 break;
             case "5":
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+
                 arrayList.get(0).setName("Vegetable Hakka Noodle");
                 arrayList.get(0).setDescription("Chinese noodles suitable for vegetarian");
                 arrayList.get(0).setImgUrl("https://www.cookwithmanali.com/wp-content/uploads/2014/11/Hakka-Noodles-1.jpg");
@@ -163,6 +182,11 @@ public class MenuParentFragment extends BaseFragment {
                 arrayList.get(2).setImgUrl("http://seonkyounglongest.com/wp-content/uploads/2018/04/shoyu-ramen-1.jpg");
                 break;
             case "6":
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+                arrayList.add(new MenuDetail());
+
                 arrayList.get(0).setName("Chocolate Milkshake");
                 arrayList.get(0).setDescription("Milkshake with chocolate flavor");
                 arrayList.get(0).setImgUrl("https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2016/05/milkshake.jpg?itok=n_3au7e1");

@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.databinding.ItemRedeemBinding;
 import com.example.itp.vendorapp.model.RedeemItem;
@@ -71,11 +73,11 @@ public class RedeemAdapter extends RecyclerView.Adapter<RedeemAdapter.ViewHolder
 
         viewHolder.bind(redeemItemList.get(i), listener);
 
-//        Glide.with(context)
-//                .asBitmap()
-//                .transform(new CenterCrop())
-//                .load("https://www.goodfood.com.au/content/dam/images/h/0/f/a/q/i/image.related.wideLandscape.940x529.h0fa4n.png/1515456591895.jpg")//TODO change to dynamic
-//                .into(viewHolder.ivRedeemItem);
+        Glide.with(context)
+                .asBitmap()
+                .transform(new CenterCrop())
+                .load("https://www.goodfood.com.au/content/dam/images/h/0/f/a/q/i/image.related.wideLandscape.940x529.h0fa4n.png/1515456591895.jpg")//TODO change to dynamic
+                .into(viewHolder.ivRedeemItem);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.itp.vendorapp.activity;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -66,6 +67,11 @@ public class VoucherActivity extends BaseActivity {
             }
 
             @Override
+            public void goToProfile() {
+                startActivity(new Intent(VoucherActivity.this, ProfileActivity.class));
+            }
+
+            @Override
             public void back() {
                 startActivityClearTop(VoucherActivity.this, MainActivity.class);
             }
@@ -83,14 +89,19 @@ public class VoucherActivity extends BaseActivity {
         return voucherItems;
     }
 
-
     @Override
-    public void initComponents() {
-
+    public void onBackPressed() {
+        //if current frame is voucher, go back to home
+        //else pop the remaining frag
+        if (getSupportFragmentManager().findFragmentById(R.id.frame_voucher_activity) instanceof VoucherFragment) {
+            startActivityClearTop(VoucherActivity.this, MainActivity.class);
+        } else {
+            fragmentHelper.popAllFragment(getSupportFragmentManager());
+        }
     }
 
     @Override
-    public void bindComponents() {
+    public void initComponents() {
 
     }
 

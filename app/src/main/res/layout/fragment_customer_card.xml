@@ -12,16 +12,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/grey_card" />
+            android:src="@drawable/card_black" />
 
-        <ImageView
-            android:id="@+id/iv_customer_card_profile_pic"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_customer_card_profile_pic"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/round_profile_picture"
+            android:src="@drawable/placeholder_profile_pic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,9 +34,9 @@
             android:textColor="@color/color_text_white"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_customer_card_profile_pic"
-            app:layout_constraintStart_toEndOf="@+id/iv_customer_card_profile_pic"
-            app:layout_constraintTop_toTopOf="@+id/iv_customer_card_profile_pic" />
+            app:layout_constraintBottom_toBottomOf="@+id/civ_customer_card_profile_pic"
+            app:layout_constraintStart_toEndOf="@+id/civ_customer_card_profile_pic"
+            app:layout_constraintTop_toTopOf="@+id/civ_customer_card_profile_pic" />
 
         <LinearLayout
             android:id="@+id/relativeLayout"
@@ -77,7 +76,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
@@ -107,16 +106,16 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginRight="8dp"
-            android:src="@drawable/qr_code"
+            android:src="@drawable/icon_qr_code"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/iv_customer_card_bg" />
 
         <ImageView
-            android:id="@+id/iv_customer_card_type"
+            android:id="@+id/civ_customer_card_type"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
@@ -151,6 +150,7 @@
                 android:id="@+id/since"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="end"
                 android:text="@string/since"
                 android:textAlignment="textEnd"
                 android:textColor="@color/color_text_white"

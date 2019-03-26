@@ -113,6 +113,7 @@ public class LocationActivity extends BaseActivity implements View.OnClickListen
         //footer
         binding.locationBottomMasterSheet.locationFooterSecondary.btnLocationNavigate.setOnClickListener(this);
 
+        bottomSheetBehavior = BottomSheetBehavior.from(binding.locationBottomSheet);
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View view, int i) {

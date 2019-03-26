@@ -30,18 +30,20 @@
     <string name="loremIpsum2p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet scelerisque odio. Aliquam erat volutpat. Vivamus ut augue a ligula lacinia luctus id sed turpis. Sed eu sapien a elit consectetur venenatis. Cras urna est, porta vitae mollis ac, ultricies vitae sem. Suspendisse potenti. Integer rutrum ligula a dictum tincidunt. Aliquam sit amet enim a augue interdum sagittis. Duis sapien odio, commodo vitae egestas dapibus, dapibus non orci. Maecenas posuere velit nec nulla molestie, at feugiat magna placerat. Sed eu ultrices mauris, sed cursus mauris. Fusce commodo vitae urna ac tempor.
 Sed ullamcorper aliquam arcu ut viverra. Maecenas quis euismod nulla. In vitae diam nec risus faucibus vulputate et id leo. Aenean eu blandit lectus, eu egestas erat. Pellentesque orci ipsum, rutrum nec posuere ac, egestas malesuada leo. Fusce iaculis turpis eget neque lobortis, quis accumsan neque gravida. Duis lobortis rhoncus eros, in eleifend mi tincidunt id. Pellentesque ac erat suscipit, lacinia est sit amet, feugiat sapien. Aliquam pellentesque fermentum euismod. Pellentesque posuere vitae metus in hendrerit.</string>
 
-    <!--individual tab item-->
     <string name="vendorName">Lekkers Cafe</string>
+    <!--individual tab item-->
     <string name="menu">Menu</string>
     <string name="redeem">Redeem</string>
-    <string name="since">Since</string>
+    <string name="voucher">Voucher</string>
+    <string name="location">Location</string>
+    <string name="setting">Setting</string>
 
+
+    <string name="since">Since</string>
     <!--read more underline-->
     <string name="read_more"><u>Read More</u></string>
     <string name="adam_see">Adam See</string>
-    <string name="voucher">Voucher</string>
     <string name="title_activity_location">Map</string>
-    <string name="setting">Setting</string>
     <string name="profile_setting">Profile Setting</string>
     <string name="about_me">About me</string>
     <string name="terms_and_conditions">Terms and Conditions</string>

@@ -110,13 +110,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             }
         });
 
-        binding.customerHeader.ivHomeHeaderProfilePic.setOnClickListener(this);
+        binding.customerHeader.civHomeHeaderProfilePic.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_home_header_profile_pic:
+            case R.id.civ_home_header_profile_pic:
                 listener.onProfileClick();
         }
     }
@@ -149,7 +149,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 .asBitmap()
                 .transform(new CenterCrop(), new CircleCrop())
                 .load(customer.getImgUrl())
-                .into(binding.customerHeader.ivHomeHeaderProfilePic);
+                .into(binding.customerHeader.civHomeHeaderProfilePic);
     }
 
 

@@ -84,6 +84,8 @@ public class VoucherUsageFragment extends BaseFragment implements View.OnClickLi
         }
     }
 
+
+
     /**
      * Listener declaration and callback methods
      **/

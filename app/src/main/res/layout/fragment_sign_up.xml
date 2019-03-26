@@ -17,7 +17,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="50dp"
-            android:src="@drawable/profile_picture"
+            android:src="@drawable/placeholder_profile_pic"
             app:civ_border_color="@color/color_sign_up_profile_pic_border"
             app:civ_border_width="2dp"
             app:layout_constraintEnd_toEndOf="parent"

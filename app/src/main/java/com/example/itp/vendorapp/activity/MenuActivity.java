@@ -1,15 +1,12 @@
 package com.example.itp.vendorapp.activity;
 
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.BaseActivity;
 import com.example.itp.vendorapp.base.helpers.FragmentHelper;
 import com.example.itp.vendorapp.databinding.ActivityMenuBinding;
-import com.example.itp.vendorapp.fragment.menu.MenuFragment;
 import com.example.itp.vendorapp.fragment.menu.MenuParentFragment;
 import com.example.itp.vendorapp.model.Menu;
 

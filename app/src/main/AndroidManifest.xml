@@ -20,7 +20,10 @@
         android:theme="@style/AppTheme">
 
         <!-- SplashScreen -->
-        <activity android:name=".activity.SplashScreenActivity">
+        <activity
+            android:name=".activity.SplashScreenActivity"
+            android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +32,9 @@
         </activity>
 
         <!-- Login -->
-        <activity android:name=".activity.LoginActivity" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -54,31 +59,44 @@
         </activity>
 
         <!-- Main -->
-        <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait" />
 
         <!-- User Profile -->
-        <activity android:name=".activity.ProfileActivity" />
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:screenOrientation="portrait" />
 
         <!-- Menu -->
-        <activity android:name=".activity.MenuActivity" />
+        <activity
+            android:name=".activity.MenuActivity"
+            android:screenOrientation="portrait" />
 
         <!-- Redeem -->
-        <activity android:name=".activity.RedeemActivity" />
+        <activity
+            android:name=".activity.RedeemActivity"
+            android:screenOrientation="portrait" />
 
         <!-- Voucher -->
-        <activity android:name=".activity.VoucherActivity" />
+        <activity
+            android:name=".activity.VoucherActivity"
+            android:screenOrientation="portrait" />
 
         <!-- Location -->
         <activity
             android:name=".activity.LocationActivity"
-            android:label="@string/title_activity_location" />
+            android:label="@string/title_activity_location"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <!--Setting-->
-        <activity android:name=".activity.SettingActivity" />
+        <activity
+            android:name=".activity.SettingActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

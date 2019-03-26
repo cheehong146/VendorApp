@@ -5,12 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.example.itp.vendorapp.adapter.VoucherAdapter;
 import com.example.itp.vendorapp.base.BaseFragment;
@@ -82,6 +79,9 @@ public class VoucherFragment extends BaseFragment implements View.OnClickListene
         switch (v.getId()) {
             case R.id.ib_back:
                 listener.back();
+                break;
+            case R.id.civ_customer_card_profile_pic:
+                listener.goToProfile();
         }
     }
 
@@ -96,6 +96,8 @@ public class VoucherFragment extends BaseFragment implements View.OnClickListene
 
     public interface FragmentListener {
         void onItemClick(VoucherItem item);
+
+        void goToProfile();
 
         void back();
     }

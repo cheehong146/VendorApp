@@ -58,7 +58,7 @@
             android:background="@color/colorPrimary"
             android:contentDescription="Close"
             android:scaleType="centerInside"
-            android:src="@drawable/close_button"
+            android:src="@drawable/close_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

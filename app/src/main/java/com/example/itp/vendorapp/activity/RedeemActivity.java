@@ -1,6 +1,7 @@
 package com.example.itp.vendorapp.activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -47,6 +48,11 @@ public class RedeemActivity extends BaseActivity {
             @Override
             public void onItemClick(RedeemItem item) {
                 showRedeemConfirmationDialog();
+            }
+
+            @Override
+            public void onProfileClick() {
+                startActivity(new Intent(RedeemActivity.this, ProfileActivity.class));
             }
 
             @Override
@@ -111,13 +117,7 @@ public class RedeemActivity extends BaseActivity {
 
     @Override
     public void initComponents() {
-        bindComponents();
         setupListener();
-    }
-
-    @Override
-    public void bindComponents() {
-
     }
 
     @Override

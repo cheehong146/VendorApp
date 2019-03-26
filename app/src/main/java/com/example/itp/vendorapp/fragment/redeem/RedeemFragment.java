@@ -5,12 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.example.itp.vendorapp.adapter.RedeemAdapter;
 import com.example.itp.vendorapp.base.BaseFragment;
@@ -75,6 +72,7 @@ public class RedeemFragment extends BaseFragment implements View.OnClickListener
     @Override
     public void setupListener() {
         binding.toolbarRedeem.ibBack.setOnClickListener(this);
+        binding.customerCardRedeem.civCustomerCardProfilePic.setOnClickListener(this);
     }
 
     @Override
@@ -82,6 +80,9 @@ public class RedeemFragment extends BaseFragment implements View.OnClickListener
         switch (v.getId()) {
             case R.id.ib_back:
                 listener.back();
+
+            case R.id.civ_customer_card_profile_pic:
+                listener.onProfileClick();
         }
     }
 
@@ -96,6 +97,8 @@ public class RedeemFragment extends BaseFragment implements View.OnClickListener
 
     public interface FragmentListener {
         void onItemClick(RedeemItem item);
+
+        void onProfileClick();
 
         void back();
     }

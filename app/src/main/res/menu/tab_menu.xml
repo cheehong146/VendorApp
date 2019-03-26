@@ -2,29 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_item_foodmenu"
-        android:icon="@drawable/menu"
-        android:iconTint="@color/color_text_white"
         android:enabled="true"
-        android:title="Menu"/>
+        android:icon="@drawable/icon_menu"
+        android:title="@string/menu" />
 
     <item
         android:id="@+id/menu_item_redeem"
-        android:icon="@drawable/redeem"
-        android:title="Redeem"/>
+        android:icon="@drawable/icon_redeem"
+        android:title="@string/redeem" />
 
     <item
         android:id="@+id/menu_item_voucher"
-        android:icon="@drawable/voucher"
-        android:title="Voucher"/>
+        android:icon="@drawable/icon_coupon"
+        android:title="@string/voucher" />
 
     <item
         android:id="@+id/menu_item_located"
-        android:icon="@drawable/location"
-        android:title="Located"/>
+        android:icon="@drawable/icon_location"
+        android:title="@string/location" />
 
 
     <item
         android:id="@+id/menu_item_setting"
-        android:icon="@drawable/setting"
-        android:title="@string/settings"/>
+        android:icon="@drawable/icon_setting"
+        android:title="@string/settings" />
 </menu>
