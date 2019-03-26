@@ -2,6 +2,7 @@ package com.example.itp.vendorapp.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +31,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private static final String TAG = "LoginActivity";
 
+    boolean isSignInFragInit;
+
+    SignInFragment signInFragment;
+    SignUpFragment signUpFragment;
     /**
      * callback for facebook login api
      */
@@ -61,12 +66,32 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_sign_in:
-                initSignInFragment();
+                if (isSignInFragInit) {
+                    fragmentHelper.replaceFragment(getSupportFragmentManager(), signInFragment, R.id.frame_login);
+                } else {
+                    signInFragment = initSignInFragment();
+                }
+                setTabTextViewBold("Sign in");
                 break;
             case R.id.tv_sign_up:
-                setSignUpFragment();
+                if (signUpFragment == null) {
+                    signUpFragment = initSignUpFragment();
+                } else {
+                    fragmentHelper.replaceFragment(getSupportFragmentManager(), signUpFragment, R.id.frame_login);
+                }
+                setTabTextViewBold("Sign up");
                 break;
 
+        }
+    }
+
+    private void setTabTextViewBold(String fragmentName) {
+        if (fragmentName.equalsIgnoreCase("Sign in")) {
+            binding.tvSignIn.setTypeface(null, Typeface.BOLD);
+            binding.tvSignUp.setTypeface(null, Typeface.NORMAL);
+        } else if (fragmentName.equalsIgnoreCase("Sign up")) {
+            binding.tvSignIn.setTypeface(null, Typeface.NORMAL);
+            binding.tvSignUp.setTypeface(null, Typeface.BOLD);
         }
     }
 
@@ -76,7 +101,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         toastMsg("TESTER", false);
     }
 
-    private void initSignInFragment() {
+    private SignInFragment initSignInFragment() {
         SignInFragment signInFragment = SignInFragment.newInstance();
         signInFragment.setupListener(new SignInFragment.FragmentListener() {
             @Override
@@ -100,14 +125,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
             }
         });
-        fragmentHelper.initFragment(
-
-                getSupportFragmentManager(), signInFragment, R.id.frame_login);
+        fragmentHelper.initFragment(getSupportFragmentManager(), signInFragment, R.id.frame_login);
+        return signInFragment;
     }
 
-    private void setSignUpFragment() {
+    private SignUpFragment initSignUpFragment() {
         SignUpFragment signUpFragment = SignUpFragment.newInstance();
         fragmentHelper.replaceFragment(getSupportFragmentManager(), signUpFragment, R.id.frame_login, "SignUpFragment");
+        return signUpFragment;
     }
 
     private void setFbLoginCallback(LoginButton fbLoginButton) {

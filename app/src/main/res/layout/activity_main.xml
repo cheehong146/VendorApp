@@ -23,12 +23,10 @@
             android:foreground="?attr/selectableItemBackground"
             app:itemIconTint="@color/color_btm_nav_icon"
             app:itemTextColor="@color/color_btm_nav_icon"
-            app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/tab_menu" />
-        <!--android:background="?android:attr/windowBackground"-->
 
     </android.support.constraint.ConstraintLayout>
 </layout>
