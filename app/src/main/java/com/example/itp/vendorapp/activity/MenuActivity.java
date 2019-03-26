@@ -3,6 +3,7 @@ package com.example.itp.vendorapp.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
+import com.example.itp.vendorapp.CONSTANTS;
 import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.BaseActivity;
 import com.example.itp.vendorapp.base.helpers.FragmentHelper;
@@ -50,7 +51,7 @@ public class MenuActivity extends BaseActivity {
                 startActivityClearTop(MenuActivity.this, MainActivity.class);
             }
         });
-        fragmentHelper.initFragment(getSupportFragmentManager(), fragment, R.id.frame_menu_parent);
+        fragmentHelper.initFragment(getSupportFragmentManager(), fragment, R.id.frame_menu_parent, CONSTANTS.MENU_FRAGMENT);
     }
 
     //dummy data

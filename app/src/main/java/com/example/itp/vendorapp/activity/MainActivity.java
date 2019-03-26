@@ -6,8 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
+import com.example.itp.vendorapp.CONSTANTS;
 import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.BaseActivity;
 import com.example.itp.vendorapp.base.helpers.FragmentHelper;
@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        fragmentHelper.initFragment(getSupportFragmentManager(), homeParentFragment, R.id.frame_main_activity);
+        fragmentHelper.initFragment(getSupportFragmentManager(), homeParentFragment, R.id.frame_main_activity, CONSTANTS.HOME_PARENT_FRAGMENT);
     }
 
     @Override
@@ -89,14 +89,16 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-
-
     private Intent getProfileIntent(Customer customer) {
         Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
         intent.putExtra("customer", customer);
         return intent;
     }
 
+    @Override
+    public void onBackPressed() {
+        getSupportFragmentManager();
+    }
 
     //Dummy data generator
     private Customer getDummyCustomer() {

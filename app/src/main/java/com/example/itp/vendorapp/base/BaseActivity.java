@@ -1,23 +1,33 @@
 package com.example.itp.vendorapp.base;
 
 import android.app.Activity;
-import android.app.Application;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.helpers.FragmentHelper;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
 public abstract class BaseActivity extends AppCompatActivity {
+    private static final String TAG = "BaseActivity";
 
     public final String SHARED_PREF_USER = "UserDataFile";
+
+    //for double tap on back to close
+    boolean close;
+
+    //loading dialog related
+    public KProgressHUD hud;
 
     public FragmentHelper fragmentHelper = new FragmentHelper(this);
 
@@ -36,6 +46,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Destroy all activity after the goToClass init and re-init it
+     *
+     * @param context   cur Context
+     * @param goToClass class to init
+     */
     public void startActivityClearTop(Context context, Class goToClass) {
         Intent intent = new Intent(context, goToClass);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -43,9 +59,21 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
+     * Destroy all activity after the goToClass init; brings back the goToClass activity without being re-init
+     *
+     * @param context   cur Context
+     * @param goToClass class to init
+     */
+    public void startActivitySingleClearTop(Context context, Class goToClass) {
+        Intent intent = new Intent(context, goToClass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+    }
+
+    /**
      * toast a msg
      *
-     * @param msg   the message to be displayed
+     * @param msg         the message to be displayed
      * @param isLongToast true for long toast, false for short toast
      */
     public void toastMsg(String msg, boolean isLongToast) {
@@ -66,14 +94,70 @@ public abstract class BaseActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    public void createKProgressHUD(Context context) {
-        KProgressHUD.create(context)
-                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-                .setLabel("Loading...")
-                .setCancellable(true)
-                .setAnimationSpeed(2)
-                .setDimAmount(0.2f)
-                .show();
+    /**
+     * show loading dialog
+     *
+     * @param title
+     * @param msg
+     */
+    public void showLoadingDialog(String title, String msg) {
+        if (hud != null) {
+            hud.dismiss();
+            hud = null;
+        }
+        if (msg != null) {
+            hud = KProgressHUD.create(this)
+                    .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                    .setLabel(title)
+                    .setDetailsLabel(msg)
+                    .setCancellable(false)
+                    .setDimAmount(0.5f)
+                    .show();
+        } else {
+            hud = KProgressHUD.create(this)
+                    .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                    .setLabel(title)
+                    .setDimAmount(0.5f)
+                    .setCancellable(false)
+                    .show();
+        }
+    }
+
+
+    /**
+     * Dismiss loading dialog
+     */
+    public void dismissLoadingDialog() {
+        try {
+            hud.dismiss();
+            hud = null;
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
+    }
+
+    /**
+     * double tap the back button within 2 second to finish the cur activity
+     */
+    public void doubleBackToClose() {
+        if (close) {
+            finish();
+        }
+        close = true;
+        toastMsg("Press again to exit", false);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                close = false;
+            }
+        }, 2000);
+    }
+
+    public boolean isCurFragmentInFrame(int frameId, String fragName){
+        if(getSupportFragmentManager().findFragmentByTag(fragName).equals("")){
+
+        }
+        return false;
     }
 
 

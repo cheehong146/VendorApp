@@ -10,40 +10,41 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <!-- TODO: Update blank fragment layout -->
+            <!-- TODO: Update blank fragment layout -->
 
-        <ImageView
-            android:id="@+id/iv_promotion"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            <ImageView
+                android:id="@+id/iv_promotion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/placeholder" />
 
-        <TextView
-            android:id="@+id/tv_promotion_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="100dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/color_promotion_text"
-            android:textSize="28sp" />
+            <TextView
+                android:id="@+id/tv_promotion_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="100dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textAlignment="center"
+                android:textColor="@color/color_promotion_text"
+                android:textSize="28sp" />
 
-        <TextView
-            android:id="@+id/tv_promotion_validity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:background="@color/color_promotion_valid_bg"
-            android:paddingLeft="8dp"
-            android:paddingTop="8dp"
-            android:paddingRight="8dp"
-            android:layout_marginTop="20dp"
-            android:paddingBottom="8dp"
-            android:text="Valid date: 08/feb/2019"
-            android:textAlignment="center"
-            android:textColor="@color/color_promotion_text"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tv_promotion_validity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:background="@color/color_promotion_valid_bg"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:text="Valid date: 08/feb/2019"
+                android:textAlignment="center"
+                android:textColor="@color/color_promotion_text"
+                android:textSize="14sp" />
 
         </RelativeLayout>
 

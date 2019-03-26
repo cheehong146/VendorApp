@@ -7,8 +7,8 @@ import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
+import com.example.itp.vendorapp.CONSTANTS;
 import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.BaseActivity;
 import com.example.itp.vendorapp.databinding.ActivityLoginBinding;
@@ -125,13 +125,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
             }
         });
-        fragmentHelper.initFragment(getSupportFragmentManager(), signInFragment, R.id.frame_login);
+        fragmentHelper.initFragment(getSupportFragmentManager(), signInFragment, R.id.frame_login, CONSTANTS.SIGN_IN_FRAGMENT);
         return signInFragment;
     }
 
     private SignUpFragment initSignUpFragment() {
         SignUpFragment signUpFragment = SignUpFragment.newInstance();
-        fragmentHelper.replaceFragment(getSupportFragmentManager(), signUpFragment, R.id.frame_login, "SignUpFragment");
+        fragmentHelper.replaceFragment(getSupportFragmentManager(), signUpFragment, R.id.frame_login, CONSTANTS.SIGN_UP_FRAGMENT);
         return signUpFragment;
     }
 

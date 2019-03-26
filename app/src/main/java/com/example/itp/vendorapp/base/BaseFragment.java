@@ -74,11 +74,12 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     /**
      * init the first fragment for the frame, use loadFragment() when putting child fragment after the intiFragment, unless it's a completely non-related fragment
      *
-     * @param fragment
-     * @param frameToBePopulated
+     * @param fragment fragment to be init
+     * @param frameToBePopulated frame of the fragment target
+     * @param fragName  name of the fragment to be init
      */
-    public void initFragment(Fragment fragment, int frameToBePopulated) {
-        fragmentHelper.initFragment(getChildFragmentManager(), fragment, frameToBePopulated);
+    public void initFragment(Fragment fragment, int frameToBePopulated, String fragName) {
+        fragmentHelper.initFragment(getChildFragmentManager(), fragment, frameToBePopulated, fragName);
     }
 
     /**
@@ -101,7 +102,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void replaceFragment(Fragment fragment, int frameLayout, String fragNameInBackStack) {
         fragmentHelper.replaceFragment(getChildFragmentManager(), fragment, frameLayout, fragNameInBackStack);
     }
-
 
 
 }

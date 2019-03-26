@@ -85,11 +85,11 @@ public class FragmentHelper {
      * @param fragment
      * @param frameLayout
      */
-    public void initFragment(FragmentManager fm, Fragment fragment, int frameLayout) {
+    public void initFragment(FragmentManager fm, Fragment fragment, int frameLayout, String fragName) {
         FragmentTransaction ft = fm.beginTransaction();
 
         //add a frag onto the frameLayout
-        ft.add(frameLayout, fragment);
+        ft.add(frameLayout, fragment, fragName);
         ft.commit();
     }
 

@@ -128,12 +128,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         //      viewpager and tabDots linkage
         binding.tabDots.setupWithViewPager(binding.viewpagerPromotion, true);
 
-        if (binding.viewpagerPromotion == null) {
-
-        } else {
-            adapter = new PromotionViewPagerAdapter(getChildFragmentManager(), promotionList);
-            binding.viewpagerPromotion.setAdapter(adapter);
-        }
+        adapter = new PromotionViewPagerAdapter(getChildFragmentManager(), promotionList);
+        binding.viewpagerPromotion.setAdapter(adapter);
 
         adapter.setupListener(new PromotionViewPagerAdapter.FragmentListener() {
             @Override

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.itp.vendorapp.CONSTANTS;
 import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.BaseFragment;
 import com.example.itp.vendorapp.databinding.FragmentMenuParentBinding;
@@ -77,7 +78,7 @@ public class MenuParentFragment extends BaseFragment {
                 replaceFragment(fragment, R.id.frame_menu_parent, "MenuDetail");
             }
         });
-        initFragment(menuFragment, R.id.frame_menu_parent);
+        initFragment(menuFragment, R.id.frame_menu_parent, CONSTANTS.MENU_FRAGMENT);
     }
 
     private ArrayList<MenuDetail> getMenuDetails(String menuId) {//TODO delete dummy data

@@ -1,18 +1,16 @@
 package com.example.itp.vendorapp.activity;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.itp.vendorapp.CONSTANTS;
 import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.BaseActivity;
 import com.example.itp.vendorapp.base.helpers.FragmentHelper;
@@ -53,7 +51,7 @@ public class RedeemActivity extends BaseActivity {
 
             @Override
             public void onProfileClick() {
-                startActivity(new Intent(RedeemActivity.this, ProfileActivity.class));
+                startActivityClearTop(RedeemActivity.this, ProfileActivity.class);
             }
 
             @Override
@@ -61,7 +59,7 @@ public class RedeemActivity extends BaseActivity {
                 startActivityClearTop(RedeemActivity.this, MainActivity.class);
             }
         });
-        fragmentHelper.initFragment(getSupportFragmentManager(), fragment, R.id.frame_redeem_activity);
+        fragmentHelper.initFragment(getSupportFragmentManager(), fragment, R.id.frame_redeem_activity, CONSTANTS.REDEEM_FRAGMENT);
     }
 
 

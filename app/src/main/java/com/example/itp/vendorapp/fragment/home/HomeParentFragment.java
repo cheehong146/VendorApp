@@ -8,8 +8,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
+import com.example.itp.vendorapp.CONSTANTS;
 import com.example.itp.vendorapp.R;
 import com.example.itp.vendorapp.base.BaseFragment;
 import com.example.itp.vendorapp.databinding.FragmentHomeParentBinding;
@@ -70,7 +70,7 @@ public class HomeParentFragment extends BaseFragment {
         homeFragment.setupListener(new HomeFragment.FragmentListener() {
             @Override
             public void onPromotionItemClick(PromotionItem promotionList) {
-                replaceFragment(initPromotionDetailFragment(promotionList), R.id.frame_home_parent, "PromotionDetailFragment");
+                replaceFragment(initPromotionDetailFragment(promotionList), R.id.frame_home_parent, CONSTANTS.PROMOTION_DETAIL_FRAGMENT);
             }
 
             @Override
@@ -78,14 +78,14 @@ public class HomeParentFragment extends BaseFragment {
                 listener.goToProfile();
             }
         });
-        initFragment(homeFragment, R.id.frame_home_parent);
+        initFragment(homeFragment, R.id.frame_home_parent, CONSTANTS.HOME_FRAGMENT);
     }
 
     /**
      * init promotion item(from item that the user clicks) and setup listener
      *
-     * @param item  the promotion detail item model
-     * @return   return a PromotionDetailFragment
+     * @param item the promotion detail item model
+     * @return return a PromotionDetailFragment
      */
     private PromotionDetailFragment initPromotionDetailFragment(PromotionItem item) {
         PromotionDetailFragment fragment = PromotionDetailFragment.newInstance(customer, item, "Lekkers Cafe");//TODO fix hardcode of vendor cafe
